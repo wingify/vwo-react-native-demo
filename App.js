@@ -11,9 +11,9 @@ class AView extends React.Component {
          source={require('./images/iPhone.png')}
         />
         <View style={{paddingTop: '5%'}}>
-          <Text>iPhone 6 (16 GB, Black)</Text>
-          <Text style={{'color' : 'grey', fontSize: 10}}>by Apple</Text>
-          <Text style={{'color' : '#BC1C1C', marginTop: 10, fontSize: 18}}>$1000</Text>
+          <Text>{this.props.name}</Text>
+          <Text style={{'color' : 'grey', fontSize: 10}}>by {this.props.brand}</Text>
+          <Text style={{'color' : '#BC1C1C', marginTop: 10, fontSize: 18}}>${this.props.price}</Text>
         </View>
       </View>
     );
@@ -27,7 +27,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <AView />
+        <AView name = "iPhone 16 GB" brand="Apple" price="1000"/>
       </View>
     );
   }
