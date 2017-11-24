@@ -8,15 +8,16 @@ export default class App extends React.Component {
   componentDidMount() {
     StatusBar.setHidden(true);
   }
+  showMenu() {
+    console.log("Show hamburger menu");
+  }
   render() {
-    return (
-      <View style={styles.app}>
-        <NavBar style={styles.nav} />
+    return <View style={styles.app}>
+        <NavBar menuClick={this.showMenu.bind(this)} style={styles.nav} />
         <View style={styles.container}>
           <Shopping />
         </View>
-      </View>
-    );
+      </View>;
   }
 }
 
