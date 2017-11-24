@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   menu: {
-    marginLeft: "1%"
+    marginLeft: "10%"
   },
   control: {
     color: "#EB5757"
