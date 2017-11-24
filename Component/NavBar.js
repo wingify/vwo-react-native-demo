@@ -10,7 +10,6 @@ class NavBar extends React.Component {
       <Text style={styles.title}>Layout Campaign</Text>
       <Text style={styles.variation}>Variation</Text>
       <Image style={styles.menu} source={require('../images/Reload.png')}/>
-      
       </View>
     );
   }

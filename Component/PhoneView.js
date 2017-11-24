@@ -24,8 +24,7 @@ const listStyle = StyleSheet.create({
     flexDirection: "row",
     paddingVertical: "2%",
     paddingHorizontal: "5%",
-    borderWidth: 0.5
-  },
+    },
   imageView: {
     backgroundColor: "#eee",
     marginRight: "10%",

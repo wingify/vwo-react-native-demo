@@ -7,34 +7,40 @@ import PhoneView from "../Component/PhoneView";
 // const windowWidth = Dimensions.get("window").width;
 
 export default class Shopping extends React.Component {
+  listSeparator = () => {
+    return <View style={{ height: 1, backgroundColor: "#CED0CE" }} />;
+  };
   render() {
     return (
       <View style={styles.container}>
-          <FlatList style={styles.list}
-            data={phoneList}
-            renderItem={({ item }) => (
-              <PhoneView
-                name={item.name}
-                brand={item.brand}
-                price={item.price}
-                image1={item.image}
-                arrangement="list"
-              />
-            )}
-          />
-          <FlatList style={styles.grid}
-            data={phoneList}
-            numColumns={2}
-            renderItem={({ item }) => (
-              <PhoneView
-                name={item.name}
-                brand={item.brand}
-                price={item.price}
-                image1={item.image}
-                arrangement="grid"
-              />
-            )}
-          />
+        <FlatList
+          style={styles.list}
+          data={phoneList}
+          ItemSeparatorComponent={this.listSeparator}
+          renderItem={({ item }) => (
+            <PhoneView
+              name={item.name}
+              brand={item.brand}
+              price={item.price}
+              image1={item.image}
+              arrangement="list"
+            />
+          )}
+        />
+        <FlatList
+          style={styles.grid}
+          data={phoneList}
+          numColumns={2}
+          renderItem={({ item }) => (
+            <PhoneView
+              name={item.name}
+              brand={item.brand}
+              price={item.price}
+              image1={item.image}
+              arrangement="grid"
+            />
+          )}
+        />
       </View>
     );
   }
@@ -46,8 +52,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#fff"
   },
-  list: { flex: 1, },
-  grid: { flex: 1, }
+  list: { flex: 1 },
+  grid: { flex: 1 }
 });
 
 const phoneList = [
@@ -80,4 +86,3 @@ const phoneList = [
     image: require("../images/zte-max.png")
   }
 ];
-
