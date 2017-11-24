@@ -46,6 +46,23 @@ export default class App extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "row",
+    backgroundColor: "#fff"
+  },
+  list: {
+    width: windowWidth / 2,
+    height: windowHeight,
+  },
+  grid: {
+    width: windowWidth / 2,
+    height: windowHeight,
+  }
+});
+
 const phoneList = [
   {
     key: "iPhone",
@@ -77,18 +94,3 @@ const phoneList = [
   }
 ];
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "row",
-    backgroundColor: "#fff"
-  },
-  list: {
-    width: windowWidth / 2,
-    height: windowHeight,
-  },
-  grid: {
-    width: windowWidth / 2,
-    height: windowHeight,
-  }
-});
