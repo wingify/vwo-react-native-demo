@@ -28,7 +28,7 @@ export default class Menu extends React.Component {
     return (
       <ScrollView style={styles.scroll}>
         <View style={styles.header}>
-          <TouchableHighlight onPress={() => this.props.menuClick()}>
+          <TouchableHighlight onPress={() => this.props.menuSelect(null)}>
             <Image source={require("../images/Close.png")} />
           </TouchableHighlight>
           <Text style={styles.option}>Choose a Campaign</Text>

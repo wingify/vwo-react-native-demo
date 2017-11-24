@@ -22,9 +22,9 @@ export default class App extends React.Component {
     });
   }
 
-  showView(id) {
+  showView(id) {//id == null => just close menu
     this.setState({
-      showMenu: false
+      showMenu: false //Hide menu
     });
     console.log("Show view " + id);
   }
@@ -40,7 +40,7 @@ export default class App extends React.Component {
         </View>
         {this.state.showMenu && (
           <View style={styles.floatView}>
-            <Menu menuSelect={this.showView.bind(this)}/>
+            <Menu menuSelect={this.showView.bind(this)} />
           </View>
         )}
       </View>
