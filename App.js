@@ -1,13 +1,19 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 import Shopping from "./View/Shopping.js"
+import NavBar from "./Component/NavBar.js"
+import { StatusBar } from 'react-native';
 
 export default class App extends React.Component {
 
+  componentDidMount() {
+    // StatusBar.setHidden(true);
+  }
   render() {
     return (
       <View style={styles.app}>
         <View style={styles.nav}>
+          <NavBar/>
         </View>
         <View style={styles.container}>
           <Shopping/>
@@ -25,7 +31,6 @@ const styles = StyleSheet.create({
   },
   nav: {
     flex: 1,
-    backgroundColor: "#090C21"
   },
   container: {
     flex: 8
