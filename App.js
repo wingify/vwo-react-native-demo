@@ -5,6 +5,12 @@ import NavBar from "./Component/NavBar.js";
 import { StatusBar } from "react-native";
 
 export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      showMenu: false
+    };
+  }
   componentDidMount() {
     StatusBar.setHidden(true);
   }
@@ -12,12 +18,14 @@ export default class App extends React.Component {
     console.log("Show hamburger menu");
   }
   render() {
-    return <View style={styles.app}>
+    return (
+      <View style={styles.app}>
         <NavBar menuClick={this.showMenu.bind(this)} style={styles.nav} />
         <View style={styles.container}>
           <Shopping />
         </View>
-      </View>;
+      </View>
+    );
   }
 }
 
