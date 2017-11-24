@@ -5,11 +5,11 @@ class NavBar extends React.Component {
   render() {
     return (        
       <View style={styles.container}>
-      <Image style={styles.menu} source={require('../images/Menu.png')}/>
-      <Text style={styles.control}>Control</Text>
-      <Text style={styles.title}>Layout Campaign</Text>
-      <Text style={styles.variation}>Variation</Text>
-      <Image style={styles.menu} source={require('../images/Reload.png')}/>
+        <Image style={styles.menu} source={require('../images/Menu.png')}/>
+        <Text style={styles.control}>Control</Text>
+        <Text style={styles.title}>Layout Campaign</Text>
+        <Text style={styles.variation}>Variation</Text>
+        <Image style={styles.reload} source={require('../images/Reload.png')}/>
       </View>
     );
   }
@@ -23,7 +23,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between"
   },
-  menu: {},
+  menu: {
+      marginLeft: "1%"
+  },
   control: {
     color: '#EB5757'
   },
@@ -33,7 +35,9 @@ const styles = StyleSheet.create({
   title: {
     color: 'white'
   },
-  reload:{},
+  reload:{
+      marginRight: "1%"
+  },
 });
 
 
