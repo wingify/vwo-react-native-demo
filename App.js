@@ -17,8 +17,7 @@ export default class App extends React.Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.list}>
-          <FlatList
+          <FlatList style={styles.list}
             data={phoneList}
             renderItem={({ item }) => (
               <PhoneView
@@ -30,9 +29,7 @@ export default class App extends React.Component {
               />
             )}
           />
-        </View>
-        <View style={styles.grid}>
-          <FlatList
+          <FlatList style={styles.grid}
             data={phoneList}
             numColumns={2}
             renderItem={({ item }) => (
@@ -45,7 +42,6 @@ export default class App extends React.Component {
               />
             )}
           />
-        </View>
       </View>
     );
   }
