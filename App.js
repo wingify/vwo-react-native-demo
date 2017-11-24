@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, FlatList } from "react-native";
-import PhoneView from './PhoneView.js'
+import PhoneView from "./PhoneView.js";
 
-const Dimensions = require('Dimensions');
-const windowHeight = Dimensions.get('window').height
-const windowWidth = Dimensions.get('window').width
+const Dimensions = require("Dimensions");
+const windowHeight = Dimensions.get("window").height;
+const windowWidth = Dimensions.get("window").width;
 
 // const window = Dimensions.get('window');
 
@@ -14,16 +14,37 @@ export default class App extends React.Component {
   }
   render() {
     console.log("Rendering" + windowHeight);
-    
+
     return (
       <View style={styles.container}>
         <View style={styles.list}>
           <FlatList
             data={phoneList}
-            renderItem={({ item }) => <PhoneView name={item.name} brand={item.brand} price={item.price} image1={item.image} arrangement="vertical"/> }
+            renderItem={({ item }) => (
+              <PhoneView
+                name={item.name}
+                brand={item.brand}
+                price={item.price}
+                image1={item.image}
+                arrangement="list"
+              />
+            )}
           />
         </View>
         <View style={styles.grid}>
+          <FlatList
+            data={phoneList}
+            numColumns={2}
+            renderItem={({ item }) => (
+              <PhoneView
+                name={item.name}
+                brand={item.brand}
+                price={item.price}
+                image1={item.image}
+                arrangement="grid"
+              />
+            )}
+          />
         </View>
       </View>
     );
@@ -64,18 +85,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center"
+    backgroundColor: "#fff"
   },
   list: {
     width: windowWidth / 2,
     height: windowHeight,
-    backgroundColor: 'lightgrey'
   },
   grid: {
     width: windowWidth / 2,
     height: windowHeight,
-    backgroundColor: 'green'
   }
 });
