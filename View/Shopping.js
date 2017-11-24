@@ -2,10 +2,6 @@ import React from "react";
 import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 import PhoneView from "../Component/PhoneView";
 
-// const Dimensions = require("Dimensions");
-// const windowHeight = Dimensions.get("window").height;
-// const windowWidth = Dimensions.get("window").width;
-
 export default class Shopping extends React.Component {
   listSeparator = () => {
     return <View style={{ height: 1, backgroundColor: "#CED0CE" }} />;
