@@ -22,7 +22,8 @@ export default class App extends React.Component {
     });
   }
 
-  showView(id) {//id == null => just close menu
+  showView(id) {
+    //id == null => just close menu
     this.setState({
       showMenu: false //Hide menu
     });
@@ -59,9 +60,8 @@ const styles = StyleSheet.create({
   },
   floatView: {
     position: "absolute",
-    width: "40%",
-    height: "100%",
-    backgroundColor: "grey"
+    width: "100%",
+    height: "100%"
   },
   nav: {
     flex: 1

@@ -26,47 +26,73 @@ export default class Menu extends React.Component {
   }
   render() {
     return (
-      <ScrollView style={styles.scroll}>
-        <View style={styles.header}>
-          <TouchableHighlight onPress={() => this.props.menuSelect(null)}>
-            <Image source={require("../images/Close.png")} />
-          </TouchableHighlight>
-          <Text style={styles.option}>Choose a Campaign</Text>
-        </View>
-        <MenuItem
-          title="Layout Campaign"
-          id="layout"
-          menuItemClick={this.menuSelected.bind(this)}
-        />
-        <MenuItem
-          title="On boarding Campaign"
-          id="onboarding"
-          menuItemClick={this.menuSelected.bind(this)}
-        />
-        <MenuItem
-          title="Clear Data"
-          id="clear"
-          menuItemClick={this.menuSelected.bind(this)}
-        />
-        <MenuItem
-          title="Enter API Key"
-          id="api"
-          menuItemClick={this.menuSelected.bind(this)}
-        />
-      </ScrollView>
+      <View style={styles.main}>
+        <ScrollView style={styles.scroll}>
+          <View style={styles.header}>
+            <TouchableHighlight onPress={() => this.props.menuSelect(null)}>
+              <Image source={require("../images/Close.png")} />
+            </TouchableHighlight>
+            <Text style={styles.title}>Choose a Campaign</Text>
+          </View>
+          <MenuItem
+            title="Layout Campaign"
+            id="layout"
+            menuItemClick={this.menuSelected.bind(this)}
+          />
+          <MenuItem
+            title="On boarding Campaign"
+            id="onboarding"
+            menuItemClick={this.menuSelected.bind(this)}
+          />
+          <MenuItem
+            title="Clear Data"
+            id="clear"
+            menuItemClick={this.menuSelected.bind(this)}
+          />
+          <MenuItem
+            title="Enter API Key"
+            id="api"
+            menuItemClick={this.menuSelected.bind(this)}
+          />
+        </ScrollView>
+        <TouchableHighlight
+          style={styles.sideView}
+          onPress={() => this.props.menuSelect(null)}
+        >
+          <View />
+        </TouchableHighlight>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  scroll: {},
+  main: {
+    flex: 1,
+    flexDirection: "row"
+  },
+  scroll: {
+    flex: 1,
+    backgroundColor: "#fafafa"
+  },
+  sideView: {
+    flex: 2,
+    backgroundColor: "rgba(20, 24, 22, 0.8)"
+  },
   header: {
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
+    alignItems: "center",
+    paddingVertical: "5%",
+    paddingLeft: "3%"
+  },
+  title: {
+    fontWeight: "bold",
+    marginLeft: "5%"
   },
   option: {
-    padding: "3%",
+    paddingLeft: "5%",
     marginTop: "0.3%",
-    backgroundColor: "white"
+    paddingVertical: "5%"
   }
 });
