@@ -6,7 +6,6 @@ export default class NavBar extends React.Component {
     return (
       <View style={styles.container}>
         <TouchableHighlight onPress={() => this.props.menuClick()}>
-        {/* <TouchableHighlight onPress={this.props.menuClick()}> */}
           <Image style={styles.menu} source={require("../images/Menu.png")} />
         </TouchableHighlight>
         <Text style={styles.control}>Control</Text>
