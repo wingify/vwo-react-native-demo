@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 
-class PhoneView extends React.Component {
+export default class PhoneView extends React.Component {
   render() {
     var styles = this.props.arrangement == "list" ? listStyle : gridStyle;
     return (
@@ -79,5 +79,3 @@ const gridStyle = StyleSheet.create({
     fontSize: 18
   }
 });
-
-export default PhoneView;

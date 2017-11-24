@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableHighlight } from "react-native";
 
-class NavBar extends React.Component {
+export default class NavBar extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -42,5 +42,3 @@ const styles = StyleSheet.create({
     marginRight: "1%"
   }
 });
-
-export default NavBar;
