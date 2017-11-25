@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View, StatusBar } from "react-native";
 import Shopping from "./View/Shopping.js";
+import Login from "./View/Login.js"
 import NavBar from "./Component/NavBar.js";
 import Menu from "./View/Menu.js";
 
@@ -8,7 +9,8 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      showMenu: false
+      showMenu: false,
+      view: "onboarding"
     };
   }
 
@@ -25,19 +27,26 @@ export default class App extends React.Component {
   showView(id) {
     //id == null => just close menu
     this.setState({
-      showMenu: false //Hide menu
+      showMenu: false, //Hide menu
+      view: id
     });
+
     console.log("Show view " + id);
   }
 
   render() {
+    let contentView = null;
+    if (this.state.view == "layout") {
+      contentView = <Shopping />;
+    } else if (this.state.view == "onboarding") {
+      contentView = <Login />
+    }
+
     return (
       <View style={styles.parent}>
         <View style={styles.app}>
           <NavBar menuClick={this.showMenu.bind(this)} style={styles.nav} />
-          <View style={styles.container}>
-            <Shopping />
-          </View>
+          <View style={styles.container}>{contentView}</View>
         </View>
         {this.state.showMenu && (
           <View style={styles.floatView}>
