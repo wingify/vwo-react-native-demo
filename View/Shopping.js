@@ -10,7 +10,7 @@ export default class Shopping extends React.Component {
     return (
       <View style={styles.container}>
         <FlatList
-          style={styles.list}
+          style={styles.half}
           data={phoneList}
           ItemSeparatorComponent={this.listSeparator}
           renderItem={({ item }) => (
@@ -24,7 +24,7 @@ export default class Shopping extends React.Component {
           )}
         />
         <FlatList
-          style={styles.grid}
+          style={styles.half}
           data={phoneList}
           numColumns={2}
           renderItem={({ item }) => (
@@ -48,8 +48,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#fff"
   },
-  list: { flex: 1 },
-  grid: { flex: 1 }
+  half: { flex: 1, borderWidth: 1 },
 });
 
 const phoneList = [
