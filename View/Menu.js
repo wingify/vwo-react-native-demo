@@ -26,13 +26,13 @@ export default class Menu extends React.Component {
   render() {
     return (
       <View style={styles.main}>
-        <ScrollView style={styles.scroll}>
           <View style={styles.header}>
             <TouchableHighlight onPress={() => this.menuSelected(null)}>
               <Image source={require("../images/Close.png")} />
             </TouchableHighlight>
             <Text style={styles.title}>Choose a Campaign</Text>
           </View>
+        <ScrollView style={styles.scroll}>
           <MenuItem
             title="Layout Campaign"
             id="layout"
