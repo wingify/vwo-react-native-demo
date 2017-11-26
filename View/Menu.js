@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  
   StyleSheet,
   Text,
   View,
@@ -47,20 +48,14 @@ export default class Menu extends React.Component {
           <MenuItem
             title="Clear Data"
             id="clear"
-            menuItemClick={this.menuSelected.bind(this)}
+            // menuItemClick={this.menuSelected.bind(this)}
           />
           <MenuItem
             title="Enter API Key"
             id="api"
-            menuItemClick={this.menuSelected.bind(this)}
+            // menuItemClick={this.menuSelected.bind(this)}
           />
         </ScrollView>
-        <TouchableHighlight
-          style={styles.sideView}
-          onPress={() => this.props.menuSelect(null)}
-        >
-          <View />
-        </TouchableHighlight>
       </View>
     );
   }
@@ -69,15 +64,7 @@ export default class Menu extends React.Component {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    flexDirection: "row"
-  },
-  scroll: {
-    flex: 1,
     backgroundColor: "#fafafa"
-  },
-  sideView: {
-    flex: 2,
-    backgroundColor: "rgba(20, 24, 22, 0.8)"
   },
   header: {
     flexDirection: "row",

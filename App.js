@@ -1,9 +1,12 @@
 import React from "react";
-import { StyleSheet, View, StatusBar } from "react-native";
+import { StyleSheet, View, StatusBar, Dimensions } from "react-native";
 import Shopping from "./View/Shopping.js";
-import Login from "./View/Login.js"
+import Login from "./View/Login.js";
 import NavBar from "./Component/NavBar.js";
 import Menu from "./View/Menu.js";
+
+import SideMenu from "react-native-side-menu";
+const window = Dimensions.get("window");
 
 export default class App extends React.Component {
   constructor() {
@@ -26,51 +29,54 @@ export default class App extends React.Component {
 
   showView(id) {
     //id == null => just close menu
-    this.setState({
-      showMenu: false, //Hide menu
-      view: id
-    });
+    if (id != null) {
+      this.setState({
+        showMenu: false, //Hide menu
+        view: id
+      });
+    } else {
+      this.setState({
+        showMenu: false, //Hide menu
+      });
+    }
 
     console.log("Show view " + id);
   }
-
+  
+  onMenuItemSelected = item =>
+    this.setState({
+      isOpen: false,
+      selectedItem: item
+    });
   render() {
     let contentView = null;
     if (this.state.view == "layout") {
       contentView = <Shopping />;
     } else if (this.state.view == "onboarding") {
-      contentView = <Login />
+      contentView = <Login />;
     }
 
+    const menu = (
+      <Menu style={styles.menu} menuSelect={this.showView.bind(this)} />
+    );
     return (
-      <View style={styles.parent}>
-        <View style={styles.app}>
-          <NavBar menuClick={this.showMenu.bind(this)} style={styles.nav} />
-          <View style={styles.container}>{contentView}</View>
-        </View>
-        {this.state.showMenu && (
-          <View style={styles.floatView}>
-            <Menu menuSelect={this.showView.bind(this)} />
-          </View>
-        )}
-      </View>
+      <SideMenu
+        isOpen={this.state.showMenu}
+        style={styles.app}
+        menu={menu}
+        openMenuOffset={window.width / 3}
+      >
+        <NavBar menuClick={this.showMenu.bind(this)} style={styles.nav} />
+        <View style={styles.container}>{contentView}</View>
+      </SideMenu>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  parent: {
-    flex: 1
-  },
   app: {
     flex: 1,
-    flexDirection: "column",
-    backgroundColor: "#fff"
-  },
-  floatView: {
-    position: "absolute",
-    width: "100%",
-    height: "100%"
+    flexDirection: "column"
   },
   nav: {
     flex: 1
