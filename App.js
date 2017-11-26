@@ -21,26 +21,18 @@ export default class App extends React.Component {
     StatusBar.setHidden(true);
   }
 
-  showMenu() {
+  actionMenuTapped() {
     this.setState({
       showMenu: !this.state.showMenu
     });
   }
 
-  showView(id) {
-    //id == null => just close menu
-    if (id != null) {
-      this.setState({
-        showMenu: false, //Hide menu
-        view: id
-      });
-    } else {
-      this.setState({
-        showMenu: false, //Hide menu
-      });
+  showView(newView) {
+    var newState = {showMenu: false}
+    if (newView) {
+      newState.view = newView
     }
-
-    console.log("Show view " + id);
+    this.setState(newState);
   }
   
   onMenuItemSelected = item =>
@@ -66,7 +58,7 @@ export default class App extends React.Component {
         menu={menu}
         openMenuOffset={window.width / 3}
       >
-        <NavBar menuClick={this.showMenu.bind(this)} style={styles.nav} />
+        <NavBar menuClick={this.actionMenuTapped.bind(this)} style={styles.nav} />
         <View style={styles.container}>{contentView}</View>
       </SideMenu>
     );
