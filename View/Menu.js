@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  
   StyleSheet,
   Text,
   View,
@@ -22,7 +21,6 @@ class MenuItem extends React.Component {
 }
 export default class Menu extends React.Component {
   menuSelected(val) {
-    // console.log("Menu selected " + val);
     this.props.menuSelect(val);
   }
   render() {
@@ -30,7 +28,7 @@ export default class Menu extends React.Component {
       <View style={styles.main}>
         <ScrollView style={styles.scroll}>
           <View style={styles.header}>
-            <TouchableHighlight onPress={() => this.props.menuSelect(null)}>
+            <TouchableHighlight onPress={() => this.menuSelected(null)}>
               <Image source={require("../images/Close.png")} />
             </TouchableHighlight>
             <Text style={styles.title}>Choose a Campaign</Text>
