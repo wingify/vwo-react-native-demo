@@ -28,13 +28,13 @@ export default class App extends React.Component {
   }
 
   showView(newView) {
-    var newState = {showMenu: false}
+    var newState = { showMenu: false };
     if (newView) {
-      newState.view = newView
+      newState.view = newView;
     }
     this.setState(newState);
   }
-  
+
   onMenuItemSelected = item =>
     this.setState({
       isOpen: false,
@@ -58,7 +58,10 @@ export default class App extends React.Component {
         menu={menu}
         openMenuOffset={window.width / 3}
       >
-        <NavBar menuClick={this.actionMenuTapped.bind(this)} style={styles.nav} />
+        <NavBar
+          menuClick={this.actionMenuTapped.bind(this)}
+          style={styles.nav}
+        />
         <View style={styles.container}>{contentView}</View>
       </SideMenu>
     );

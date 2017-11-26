@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   half:{
       flex: 1,
-      borderWidth: 1
+      borderWidth: StyleSheet.hairlineWidth
   }
 });
 

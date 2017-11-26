@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#fff"
   },
-  half: { flex: 1, borderWidth: 1 },
+  half: { flex: 1, borderWidth: StyleSheet.hairlineWidth },
 });
 
 const phoneList = [
