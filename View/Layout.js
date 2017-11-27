@@ -17,10 +17,7 @@ export default class Layout extends React.Component {
           ItemSeparatorComponent={ () => <View style={{ height: 1, backgroundColor: "#CED0CE" }} /> }          
           renderItem={({ item }) => (
             <PhoneView style={styles.listItem}
-              name={item.name}
-              brand={item.brand}
-              price={item.price}
-              image1={item.image}
+              item={item}
               type={this.props.type}
               tapped={this.itemTapped.bind(this)}
             />

@@ -18,18 +18,19 @@ export default class PhoneView extends React.Component {
 
   render() {
     var styles = this.props.type == "list" ? listStyle : gridStyle;
+    const item = this.props.item
     return (
       <TouchableHighlight onPress={() => this.props.tapped()}>
         <View style={styles.container}>
           <View style={styles.imageView}>
-            <Image style={styles.phoneImage} source={this.props.image1} />
+            <Image style={styles.phoneImage} source={item.image} />
           </View>
           <View style={styles.details}>
             <Text numberOfLines={2} style={styles.name}>
-              {this.props.name}
+              {item.name}
             </Text>
-            <Text style={styles.brand}> by {this.props.brand}</Text>
-            <Text style={styles.price}> ${this.props.price} </Text>
+            <Text style={styles.brand}> by {item.brand}</Text>
+            <Text style={styles.price}> ${item.price} </Text>
           </View>
         </View>
       </TouchableHighlight>
