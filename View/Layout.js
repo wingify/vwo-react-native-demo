@@ -1,12 +1,27 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 import PhoneView from "../Component/PhoneView";
+import PhoneDetailView from "../Component/PhoneDetails"
 
 export default class Layout extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      showDetailsView: true,
+    };
+  }
+
   itemTapped() {
     console.log("Item tapped.");
+    this.setState({showDetailsView : true});
   }
+
   render() {
+    if (this.state.showDetailsView) {
+      return (
+        <PhoneDetailView item={phoneList[0]} style={styles.container}></PhoneDetailView>
+      );
+    }
     return (
       <View style={styles.container}>
         <FlatList
