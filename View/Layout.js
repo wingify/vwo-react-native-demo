@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 import PhoneView from "../Component/PhoneView";
 
-export default class Shopping extends React.Component {
+export default class Layout extends React.Component {
   listSeparator = () => {
     return <View style={{ height: 1, backgroundColor: "#CED0CE" }} />;
   };

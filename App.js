@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, StatusBar, Dimensions } from "react-native";
-import Shopping from "./View/Shopping.js";
-import Login from "./View/Login.js";
+import Layout from "./View/Layout.js";
+import Onboarding from "./View/Onboarding.js";
 import NavBar from "./Component/NavBar.js";
 import Menu from "./View/Menu.js";
 
@@ -34,9 +34,9 @@ export default class App extends React.Component {
   render() {
     let contentView = null;
     if (this.state.view == "layout") {
-      contentView = <Shopping />;
+      contentView = <Layout />;
     } else if (this.state.view == "onboarding") {
-      contentView = <Login />;
+      contentView = <Onboarding />;
     }
 
     const menu = (

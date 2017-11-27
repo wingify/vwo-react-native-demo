@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 import LoginForm from "../Component/LoginForm";
 
-export default class Login extends React.Component {
+export default class Onboarding extends React.Component {
   listSeparator = () => {
     return <View style={{ height: 1 }} />;
   };
