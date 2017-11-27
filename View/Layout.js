@@ -12,7 +12,6 @@ export default class Layout extends React.Component {
   }
 
   itemTapped(key) {
-    console.log("Item tapped " + key);
     this.setState({ showDetailsView: key });
   }
  
