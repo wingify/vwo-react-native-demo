@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   },
   form: {
-    marginHorizontal: "10%",
+    marginHorizontal: "20%",
     marginVertical: "5%"
   },
   inputGroup: {
