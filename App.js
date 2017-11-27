@@ -23,7 +23,7 @@ export default class App extends React.Component {
     });
   }
 
-  showView(newView) {
+  updateContentView(newView) {
     var newState = { showMenu: false };
     if (newView) {
       newState.view = newView;
@@ -31,11 +31,6 @@ export default class App extends React.Component {
     this.setState(newState);
   }
 
-  onMenuItemSelected = item =>
-    this.setState({
-      isOpen: false,
-      selectedItem: item
-    });
   render() {
     let contentView = null;
     if (this.state.view == "layout") {
@@ -45,7 +40,7 @@ export default class App extends React.Component {
     }
 
     const menu = (
-      <Menu style={styles.menu} menuSelect={this.showView.bind(this)} />
+      <Menu style={styles.menu} menuSelect={this.updateContentView.bind(this)} />
     );
     return (
       <SideMenu
