@@ -8,6 +8,7 @@ import {
   FlatList,
   TouchableHighlight
 } from "react-native";
+import Button from "../Component/Button";
 
 export default class PhoneDetailView extends React.Component {
   constructor() {
@@ -43,6 +44,21 @@ export default class PhoneDetailView extends React.Component {
                 • Also available in Space Gery and Rose gold
               </Text>
             </View>
+            <View style={styles.button}>
+              <Button
+                style={styles.button}
+                title="Buy Now"
+                color="#AE7827"
+                click={() => this.login()}
+              />
+            </View>
+            <View style={styles.button}>
+              <Button
+                title="Add to Cart"
+                color="#AFB52C"
+                click={() => this.login()}
+              />
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -61,14 +77,14 @@ const styles = StyleSheet.create({
     marginLeft: "2%",
     marginTop: "2%",
     width: 30,
-    height: 30,
+    height: 30
   },
   scrollcontainer: {
     alignItems: "center",
     paddingVertical: "5%",
     paddingHorizontal: "15%"
   },
-  phoneImage: { width: 50, height: 100 },
+  phoneImage: { width: 60, height: 120 },
   name: {
     paddingTop: "4%",
     fontSize: 12
@@ -94,5 +110,9 @@ const styles = StyleSheet.create({
   details: {
     paddingTop: "3%",
     fontSize: 10
+  },
+  button: {
+    paddingVertical: "5%",
+    width: "100%"
   }
 });

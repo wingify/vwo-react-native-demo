@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
 
 export default class Button extends React.Component {
   render() {
-    const combineStyles = StyleSheet.flatten([styles.container, this.props.style]);
+    const combineStyles = StyleSheet.flatten([styles.container, {backgroundColor: this.props.color}]);
     return (
       <TouchableHighlight
         style={combineStyles}
@@ -17,11 +17,11 @@ export default class Button extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      paddingVertical: "7%",
+      paddingVertical: "5%",
       justifyContent: "center",
       alignItems: "center",
-      borderRadius: 2
+      borderRadius: 2,
+      width: "100%"
   },
   text: {
     fontSize: 12,

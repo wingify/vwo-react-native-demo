@@ -29,7 +29,7 @@ export default class LoginForm extends React.Component {
         <View style={styles.inputGroup}>
         <Button
             title="Login"
-            style={{ backgroundColor: "#27AE60" }}
+            color="#27AE60"
             click={() => this.login()}
           />
           <Text style={[styles.secondaryLabel, { textAlign: "center", paddingVertical: "3%"}]}>
@@ -37,7 +37,7 @@ export default class LoginForm extends React.Component {
           </Text>
           <Button
             title="Login with Facebook"
-            style={{ backgroundColor: "#1D5196" }}
+            color="#1D5196"
             click={() => this.login()}
           />
         </View>
@@ -49,7 +49,7 @@ export default class LoginForm extends React.Component {
         <View style={styles.inputGroup}>
           <Button
             title="Skip and Continue  ➔"
-            style={{ backgroundColor: "#AAA" }}
+            color="#AAA"
             click={() => this.login()}
           />
         </View>
