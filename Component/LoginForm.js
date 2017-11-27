@@ -16,6 +16,7 @@ export default class LoginForm extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+      <ScrollView style={styles.form}>
         <View style={styles.inputGroup}>
           <Text style={styles.label}>Email</Text>
           <TextInput style={styles.input} editable />
@@ -52,6 +53,7 @@ export default class LoginForm extends React.Component {
             click={() => this.login()}
           />
         </View>
+        </ScrollView>
       </View>
     );
   }
@@ -61,9 +63,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    // borderWidth: 1,
-    marginHorizontal: "20%",
-    marginVertical: "5%"
+    borderWidth: StyleSheet.hairlineWidth,
+    backgroundColor: "#fff"    
+  },
+  form: {
+    marginHorizontal: "10%",
+    marginVertical: "5%",
+
   },
   inputGroup: {
     marginVertical: "4%"

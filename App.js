@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, View, StatusBar, Dimensions } from "react-native";
 import Layout from "./View/Layout.js";
-import Onboarding from "./View/Onboarding.js";
 import NavBar from "./Component/NavBar.js";
 import Menu from "./View/Menu.js";
+import LoginForm from "./Component/LoginForm.js";
 
 import SideMenu from "react-native-side-menu";
 const window = Dimensions.get("window");
@@ -41,7 +41,12 @@ export default class App extends React.Component {
         </View>
       );
     } else if (this.state.view == "onboarding") {
-      contentView = <Onboarding />;
+      contentView = (
+        <View style={styles.splitview}>
+          <LoginForm />
+          <LoginForm />
+        </View>
+      );
     }
 
     const menu = (
@@ -80,6 +85,6 @@ const styles = StyleSheet.create({
   },
   splitview: {
     flex: 1,
-    flexDirection: "row"
+    flexDirection: "row",
   }
 });
