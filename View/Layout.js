@@ -13,7 +13,6 @@ export default class Layout extends React.Component {
           style={styles.half}
           data={phoneList}
           numColumns={this.props.type == "list" ? 1 : 2}          
-          ItemSeparatorComponent={this.listSeparator}
           ItemSeparatorComponent={ () => <View style={{ height: 1, backgroundColor: "#CED0CE" }} /> }          
           renderItem={({ item }) => (
             <PhoneView style={styles.listItem}
