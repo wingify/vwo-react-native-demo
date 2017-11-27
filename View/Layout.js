@@ -7,24 +7,32 @@ export default class Layout extends React.Component {
   constructor() {
     super();
     this.state = {
-      showDetailsView: false
+      showDetailsView: null
     };
   }
 
-  itemTapped() {
-    console.log("Item tapped.");
-    this.setState({ showDetailsView: true });
+  itemTapped(key) {
+    console.log("Item tapped " + key);
+    this.setState({ showDetailsView: key });
+  }
+ 
+  phoneDetailView(key) {
+    key = this.state.showDetailsView;
+    data = phoneList.filter(function(item) {
+      return item.key == key;
+    })[0];
+    return (
+      <PhoneDetailView
+        item={data}
+        style={styles.container}
+        onClose={() => this.setState({ showDetailsView: null })}
+      />
+    );
   }
 
   render() {
     if (this.state.showDetailsView) {
-      return (
-        <PhoneDetailView
-          item={phoneList[0]}
-          style={styles.container}
-          onClose={() => this.setState({ showDetailsView: false })}
-        />
-      );
+      return this.phoneDetailView(this.state.showDetailsView)
     }
     return (
       <View style={styles.container}>
@@ -37,7 +45,6 @@ export default class Layout extends React.Component {
           )}
           renderItem={({ item }) => (
             <PhoneView
-              style={styles.listItem}
               item={item}
               type={this.props.type}
               tapped={this.itemTapped.bind(this)}
@@ -55,11 +62,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#fff"
   },
-  half: { flex: 1, borderWidth: StyleSheet.hairlineWidth },
-  listItem: {
-    // backgroundColor: "red",
-    // width: "20%"
-  }
+  half: { flex: 1, borderWidth: StyleSheet.hairlineWidth }
 });
 
 const phoneList = [

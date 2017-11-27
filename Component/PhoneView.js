@@ -20,7 +20,7 @@ export default class PhoneView extends React.Component {
     var styles = this.props.type == "list" ? listStyle : gridStyle;
     const item = this.props.item
     return (
-      <TouchableHighlight style={styles.container} onPress={() => this.props.tapped()}>
+      <TouchableHighlight style={styles.container} onPress={() => this.props.tapped(item.key)}>
         <View style={styles.container}>
           <View style={styles.imageView}>
             <Image style={styles.phoneImage} source={item.image} />
