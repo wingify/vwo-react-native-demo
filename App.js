@@ -13,7 +13,7 @@ export default class App extends React.Component {
     super();
     this.state = {
       showMenu: false,
-      view: "layout"
+      view: "onboarding"
     };
   }
 
@@ -44,7 +44,7 @@ export default class App extends React.Component {
       contentView = (
         <View style={styles.splitview}>
           <LoginForm />
-          <LoginForm />
+          <LoginForm skip/>
         </View>
       );
     }
