@@ -1,20 +1,38 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, FlatList } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  FlatList,
+  TouchableHighlight
+} from "react-native";
 
 export default class PhoneView extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      showDetailsView: false,
+    };
+  }
+
   render() {
-    var styles = this.props.arrangement == "list" ? listStyle : gridStyle;
+    var styles = this.props.type == "list" ? listStyle : gridStyle;
     return (
-      <View style={styles.container}>
-        <View style={styles.imageView}>
+      <TouchableHighlight onPress={() => this.props.tapped()}>
+        <View style={styles.container}>
+          <View style={styles.imageView}>
             <Image style={styles.phoneImage} source={this.props.image1} />
+          </View>
+          <View style={styles.details}>
+            <Text numberOfLines={2} style={styles.name}>
+              {this.props.name}
+            </Text>
+            <Text style={styles.brand}> by {this.props.brand}</Text>
+            <Text style={styles.price}> ${this.props.price} </Text>
+          </View>
         </View>
-        <View style={styles.details}>
-          <Text numberOfLines={2} style={styles.name}>{this.props.name}</Text>
-          <Text style={styles.brand}> by {this.props.brand}</Text>
-          <Text style={styles.price}> ${this.props.price} </Text>
-        </View>
-      </View>
+      </TouchableHighlight>
     );
   }
 }
@@ -23,18 +41,18 @@ const listStyle = StyleSheet.create({
   container: {
     flexDirection: "row",
     paddingVertical: "2%",
-    paddingHorizontal: "5%",
-    },
+    paddingHorizontal: "5%"
+  },
   imageView: {
     backgroundColor: "#eee",
-    marginRight: "10%",
+    marginRight: "10%"
   },
-  phoneImage: { width: 50, height: 100},
+  phoneImage: { width: 50, height: 100 },
   details: {
     paddingTop: "5%"
   },
   name: {
-      fontSize: 12
+    fontSize: 12
   },
   brand: {
     color: "#AAAAAA",
@@ -52,22 +70,23 @@ const gridStyle = StyleSheet.create({
     flex: 0.5,
     flexDirection: "column",
     paddingVertical: "2%",
-    paddingHorizontal: "5%",
+    paddingHorizontal: "5%"
   },
   imageView: {
     alignItems: "center",
     borderWidth: 1,
     paddingVertical: "10%"
-  },    
-  phoneImage: { 
-      flex: 0.5,
-      width: 50, height: 100, 
-    },
+  },
+  phoneImage: {
+    flex: 0.5,
+    width: 50,
+    height: 100
+  },
   details: {
     paddingTop: "5%"
   },
   name: {
-    fontSize: 12    
+    fontSize: 12
   },
   brand: {
     color: "#AAAAAA",

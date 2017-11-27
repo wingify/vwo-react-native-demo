@@ -3,6 +3,9 @@ import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 import PhoneView from "../Component/PhoneView";
 
 export default class Layout extends React.Component {
+  itemTapped() {
+    console.log("Item tapped.");
+  }
   listSeparator = () => {
     return <View style={{ height: 1, backgroundColor: "#CED0CE" }} />;
   };
@@ -12,28 +15,16 @@ export default class Layout extends React.Component {
         <FlatList
           style={styles.half}
           data={phoneList}
+          numColumns={this.props.type == "list" ? 1 : 2}          
           ItemSeparatorComponent={this.listSeparator}
           renderItem={({ item }) => (
-            <PhoneView
+            <PhoneView style={styles.listItem}
               name={item.name}
               brand={item.brand}
               price={item.price}
               image1={item.image}
-              arrangement="list"
-            />
-          )}
-        />
-        <FlatList
-          style={styles.half}
-          data={phoneList}
-          numColumns={2}
-          renderItem={({ item }) => (
-            <PhoneView
-              name={item.name}
-              brand={item.brand}
-              price={item.price}
-              image1={item.image}
-              arrangement="grid"
+              type={this.props.type}
+              tapped={this.itemTapped.bind(this)}
             />
           )}
         />
@@ -49,6 +40,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   },
   half: { flex: 1, borderWidth: StyleSheet.hairlineWidth },
+  listItem: {
+    backgroundColor: "red",
+    width: "20%"
+  }
 });
 
 const phoneList = [
@@ -79,5 +74,4 @@ const phoneList = [
     brand: "ZTE",
     price: 129,
     image: require("../images/zte-max.png")
-  }
-];
+  }];

@@ -34,13 +34,21 @@ export default class App extends React.Component {
   render() {
     let contentView = null;
     if (this.state.view == "layout") {
-      contentView = <Layout />;
+      contentView = (
+        <View style={styles.splitview}>
+          <Layout type="list" />
+          <Layout type="grid" />
+        </View>
+      );
     } else if (this.state.view == "onboarding") {
       contentView = <Onboarding />;
     }
 
     const menu = (
-      <Menu style={styles.menu} menuSelect={this.updateContentView.bind(this)} />
+      <Menu
+        style={styles.menu}
+        menuSelect={this.updateContentView.bind(this)}
+      />
     );
     return (
       <SideMenu
@@ -69,5 +77,9 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 8
+  },
+  splitview: {
+    flex: 1,
+    flexDirection: "row"
   }
 });
