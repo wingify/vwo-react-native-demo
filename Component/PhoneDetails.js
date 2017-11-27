@@ -21,7 +21,7 @@ export default class PhoneDetailView extends React.Component {
     const item = this.props.item;
     return (
       <View style={styles.container}>
-        <TouchableHighlight onPress={() => this.props.tapped()}>
+        <TouchableHighlight onPress={() => this.props.onClose()}>
           <Image style={styles.close} source={require("../images/Close.png")} />
         </TouchableHighlight>
 

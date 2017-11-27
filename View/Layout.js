@@ -1,25 +1,29 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 import PhoneView from "../Component/PhoneView";
-import PhoneDetailView from "../Component/PhoneDetails"
+import PhoneDetailView from "../Component/PhoneDetails";
 
 export default class Layout extends React.Component {
   constructor() {
     super();
     this.state = {
-      showDetailsView: true,
+      showDetailsView: false
     };
   }
 
   itemTapped() {
     console.log("Item tapped.");
-    this.setState({showDetailsView : true});
+    this.setState({ showDetailsView: true });
   }
 
   render() {
     if (this.state.showDetailsView) {
       return (
-        <PhoneDetailView item={phoneList[0]} style={styles.container}></PhoneDetailView>
+        <PhoneDetailView
+          item={phoneList[0]}
+          style={styles.container}
+          onClose={() => this.setState({ showDetailsView: false })}
+        />
       );
     }
     return (
@@ -27,10 +31,13 @@ export default class Layout extends React.Component {
         <FlatList
           style={styles.half}
           data={phoneList}
-          numColumns={this.props.type == "list" ? 1 : 2}          
-          ItemSeparatorComponent={ () => <View style={{ height: 1, backgroundColor: "#CED0CE" }} /> }          
+          numColumns={this.props.type == "list" ? 1 : 2}
+          ItemSeparatorComponent={() => (
+            <View style={{ height: 1, backgroundColor: "#CED0CE" }} />
+          )}
           renderItem={({ item }) => (
-            <PhoneView style={styles.listItem}
+            <PhoneView
+              style={styles.listItem}
               item={item}
               type={this.props.type}
               tapped={this.itemTapped.bind(this)}
@@ -83,4 +90,5 @@ const phoneList = [
     brand: "ZTE",
     price: 129,
     image: require("../images/zte-max.png")
-  }];
+  }
+];
