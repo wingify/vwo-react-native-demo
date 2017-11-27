@@ -20,7 +20,7 @@ export default class PhoneView extends React.Component {
     var styles = this.props.type == "list" ? listStyle : gridStyle;
     const item = this.props.item
     return (
-      <TouchableHighlight onPress={() => this.props.tapped()}>
+      <TouchableHighlight style={styles.container} onPress={() => this.props.tapped()}>
         <View style={styles.container}>
           <View style={styles.imageView}>
             <Image style={styles.phoneImage} source={item.image} />
@@ -40,6 +40,7 @@ export default class PhoneView extends React.Component {
 
 const listStyle = StyleSheet.create({
   container: {
+    flex: 1,
     flexDirection: "row",
     paddingVertical: "2%",
     paddingHorizontal: "5%"
@@ -75,7 +76,7 @@ const gridStyle = StyleSheet.create({
   },
   imageView: {
     alignItems: "center",
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     paddingVertical: "10%"
   },
   phoneImage: {

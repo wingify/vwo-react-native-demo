@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
   },
   half: { flex: 1, borderWidth: StyleSheet.hairlineWidth },
   listItem: {
-    backgroundColor: "red",
-    width: "20%"
+    // backgroundColor: "red",
+    // width: "20%"
   }
 });
 
