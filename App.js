@@ -17,10 +17,6 @@ export default class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-    StatusBar.setHidden(true);
-  }
-
   actionMenuTapped() {
     this.setState({
       showMenu: !this.state.showMenu
