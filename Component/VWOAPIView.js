@@ -48,7 +48,6 @@ export default class VWOAPIView extends React.Component {
             <TextInput
               defaultValue={this.state.api}
               style={styles.input}
-              placeHolder="VWO API key"
               onChangeText={text => this.setState({ api: text })}
               editable
             />
