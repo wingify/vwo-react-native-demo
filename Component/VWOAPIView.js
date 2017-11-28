@@ -26,9 +26,8 @@ export default class VWOAPIView extends React.Component {
   };
 
   launchVWO(key) {
-    console.log("VWO launching with key " + key);
     if (key == "") {
-      alert("Please enter vlaid key");
+      alert("Please enter valid key");
       return;
     }
     VWO.launchWithCallback(key, function(error) {
@@ -72,15 +71,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    borderWidth: StyleSheet.hairlineWidth,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
   },
   form: {
     marginHorizontal: "20%",
-    marginVertical: "5%"
   },
   inputGroup: {
-    marginVertical: "4%"
+    marginVertical: "2%"
   },
   label: {
     fontSize: 12,
