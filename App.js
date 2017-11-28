@@ -58,6 +58,7 @@ export default class App extends React.Component {
         );
     }
   }
+  
   titleForNavBar() {
     const currentKey = this.state.view;
     return menuItems.filter(function(item) {
