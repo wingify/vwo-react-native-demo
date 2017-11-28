@@ -44,7 +44,7 @@ export default class App extends React.Component {
       contentView = (
         <View style={styles.splitview}>
           <LoginForm />
-          <LoginForm skip socialMedia/>
+          <LoginForm skip={true} socialMedia/>
         </View>
       );
     }

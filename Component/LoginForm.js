@@ -10,18 +10,20 @@ import {
 import Button from "../Component/Button";
 
 export default class LoginForm extends React.Component {
+  
   constructor() {
     super();
     this.state = {
       showDetailsView: null
     };
   }
+
   loginCompletedView(text) {
     return (
-      <View style={{ flex: 1, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}>
-      <Text>{text}</Text>
+      <View style={styles.loginCompletedView}>
+        <Text>{text}</Text>
       </View>
-    )
+    );
   }
 
   render() {
@@ -61,7 +63,9 @@ export default class LoginForm extends React.Component {
               <Button
                 title="Login with Facebook"
                 color="#1D5196"
-                click={() => this.setState({ showDetailsView: "Logged in With FaceBook" })}
+                click={() =>
+                  this.setState({ showDetailsView: "Logged in With FaceBook" })
+                }
               />
             )}
           </View>
@@ -75,8 +79,10 @@ export default class LoginForm extends React.Component {
               <Button
                 title="Skip and Continue  ➔"
                 color="#AAA"
-                click={() => this.setState({ showDetailsView: "Login Skipped" })}
-                />
+                click={() =>
+                  this.setState({ showDetailsView: "Login Skipped" })
+                }
+              />
             </View>
           )}
         </ScrollView>
@@ -111,5 +117,11 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     height: 30,
     backgroundColor: "#ECE7E7"
+  },
+  loginCompletedView: {
+    flex: 1,
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center"
   }
 });
