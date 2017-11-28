@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   container: {
-    flex: 8
+    flex: 7
   },
   splitview: {
     flex: 1,

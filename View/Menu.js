@@ -28,7 +28,7 @@ export default class Menu extends React.Component {
     return (
       <View style={styles.main}>
         <View style={styles.header}>
-          <TouchableHighlight onPress={() => this.menuClose()}>
+          <TouchableHighlight onPress={() => this.props.menuClose()}>
             <Image source={require("../images/Close.png")} />
           </TouchableHighlight>
           <Text style={styles.title}>Choose a Campaign</Text>
