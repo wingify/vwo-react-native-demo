@@ -5,7 +5,8 @@ import {
   View,
   ScrollView,
   TextInput,
-  TouchableHighlight
+  TouchableHighlight,
+  Clipboard
 } from "react-native";
 import Button from "../Component/Button";
 import VWO from "vwo-react-native";
@@ -13,11 +14,16 @@ import VWO from "vwo-react-native";
 export default class VWOAPIView extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      api: ""
+      api: "",
     };
+    this.readFromClipboard();
   }
+
+  readFromClipboard = async () => {
+    const clipboardString = await Clipboard.getString();
+    this.setState({ api: clipboardString });
+  };
 
   launchVWO(key) {
     console.log("VWO launching with key " + key);
@@ -41,6 +47,7 @@ export default class VWOAPIView extends React.Component {
           <View style={styles.inputGroup}>
             <Text style={styles.label}>VWO API Key</Text>
             <TextInput
+              defaultValue={this.state.api}
               style={styles.input}
               placeHolder="VWO API key"
               onChangeText={text => this.setState({ api: text })}
@@ -49,6 +56,7 @@ export default class VWOAPIView extends React.Component {
           </View>
           <View style={styles.inputGroup}>
             <Button
+              defaultValue=""
               title="Submit"
               color="#27AE60"
               click={() => this.launchVWO(this.state.api)}
