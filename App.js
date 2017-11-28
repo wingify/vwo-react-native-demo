@@ -6,6 +6,8 @@ import Menu from "./View/Menu.js";
 import LoginForm from "./Component/LoginForm.js";
 import VWOAPIView from "./Component/VWOAPIView.js";
 import SideMenu from "react-native-side-menu";
+import VWO from "vwo-react-native";
+
 const window = Dimensions.get("window");
 
 export default class App extends React.Component {
@@ -14,8 +16,9 @@ export default class App extends React.Component {
     this.state = {
       showMenu: false,
       view: "layout",
-      leftLayout: "list",
-      rightLayout: "list"
+      layout: "list",
+        skip: false,
+        socialMedia: false
     };
   }
 
@@ -27,9 +30,43 @@ export default class App extends React.Component {
 
   actionReload() {
     console.log("Reload");
+    var that = this;
     if (this.state.view == "layout") {
-      this.setState({
-        rightLayout: "grid"
+      console.log("Reload layout");
+      VWO.variationForKeyWithDefaultValue("layout", "list", function(
+        error,
+        variation
+      ) {
+        if (error) {
+          console.log(error);
+        } else {
+          that.setState({ layout: variation });
+        }
+      });
+    }
+    if (this.state.view == "onboarding") {
+      console.log("Reload onboarding");
+      VWO.variationForKeyWithDefaultValue("skip", false, function(
+        error,
+        variation
+      ) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Skip:"  + variation);
+          that.setState({ skip: variation });
+        }
+      });
+      VWO.variationForKeyWithDefaultValue("socialMedia", false, function(
+        error,
+        variation
+      ) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Social Media: " + variation);
+          that.setState({ socialMedia: variation });
+        }
       });
     }
   }
@@ -39,15 +76,18 @@ export default class App extends React.Component {
       case "layout":
         return (
           <View style={styles.splitview}>
-            <Layout type={this.state.leftLayout} />
-            <Layout type={this.state.rightLayout} />
+            <Layout type="list" />
+            <Layout type={this.state.layout} />
           </View>
         );
       case "onboarding":
         return (
           <View style={styles.splitview}>
             <LoginForm />
-            <LoginForm skip={true} socialMedia />
+            <LoginForm
+              skip={this.state.skip}
+              socialMedia={this.state.socialMedia}
+            />
           </View>
         );
       case "api":
@@ -58,7 +98,7 @@ export default class App extends React.Component {
         );
     }
   }
-  
+
   titleForNavBar() {
     const currentKey = this.state.view;
     return menuItems.filter(function(item) {
