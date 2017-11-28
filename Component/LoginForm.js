@@ -32,7 +32,7 @@ export default class LoginForm extends React.Component {
     }
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.form}>
+        <ScrollView style={styles.form} showsVerticalScrollIndicator={false}>
           <View style={styles.inputGroup}>
             <Text style={styles.label}>Email</Text>
             <TextInput style={styles.input} editable />
