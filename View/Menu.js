@@ -44,13 +44,13 @@ export default class Menu extends React.Component {
             menuItemClick={this.menuSelected.bind(this)}
           />
           <MenuItem
-            title="Clear Data"
-            id="clear"
-            // menuItemClick={this.menuSelected.bind(this)}
-          />
-          <MenuItem
             title="Enter API Key"
             id="api"
+            menuItemClick={this.menuSelected.bind(this)}
+          />
+          <MenuItem
+            title="Clear Data"
+            id="clear"
             // menuItemClick={this.menuSelected.bind(this)}
           />
         </ScrollView>

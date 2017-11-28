@@ -14,7 +14,7 @@ export default class Layout extends React.Component {
   itemTapped(key) {
     this.setState({ showDetailsView: key });
   }
- 
+
   phoneDetailView(key) {
     key = this.state.showDetailsView;
     data = phoneList.filter(function(item) {
@@ -31,11 +31,12 @@ export default class Layout extends React.Component {
 
   render() {
     if (this.state.showDetailsView) {
-      return this.phoneDetailView(this.state.showDetailsView)
+      return this.phoneDetailView(this.state.showDetailsView);
     }
     return (
       <View style={styles.container}>
         <FlatList
+          key={this.props.type == "list" ? 1 : 2}
           style={styles.half}
           data={phoneList}
           numColumns={this.props.type == "list" ? 1 : 2}

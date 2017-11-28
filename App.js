@@ -13,11 +13,13 @@ export default class App extends React.Component {
     super();
     this.state = {
       showMenu: false,
-      view: "layout"
+      view: "layout",
+      leftLayout: "list",
+      rightLayout: "list"
     };
   }
 
-  actionMenuTapped() {
+  menuButtonTapped() {
     this.setState({
       showMenu: !this.state.showMenu
     });
@@ -25,6 +27,11 @@ export default class App extends React.Component {
 
   actionReload() {
     console.log("Reload");
+    if (this.state.view == "layout") {
+      this.setState({
+        rightLayout: "grid"
+      });
+    }
   }
 
   updateContentView(newView) {
@@ -40,15 +47,15 @@ export default class App extends React.Component {
     if (this.state.view == "layout") {
       contentView = (
         <View style={styles.splitview}>
-          <Layout type="list" />
-          <Layout type="grid" />
+          <Layout type={this.state.leftLayout} />
+          <Layout type={this.state.rightLayout} />
         </View>
       );
     } else if (this.state.view == "onboarding") {
       contentView = (
         <View style={styles.splitview}>
           <LoginForm />
-          <LoginForm skip={true} socialMedia/>
+          <LoginForm skip={true} socialMedia />
         </View>
       );
     }
@@ -68,7 +75,7 @@ export default class App extends React.Component {
       >
         <NavBar
           reload={this.actionReload.bind(this)}
-          menuClick={this.actionMenuTapped.bind(this)}
+          menuClick={this.menuButtonTapped.bind(this)}
           style={styles.nav}
         />
         <View style={styles.container}>{contentView}</View>
