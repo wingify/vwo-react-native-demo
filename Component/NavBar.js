@@ -9,7 +9,7 @@ export default class NavBar extends React.Component {
           <Image style={styles.menu} source={require("../images/Menu.png")} />
         </TouchableHighlight>
         <Text style={styles.control}>Control</Text>
-        <Text style={styles.title}>Layout Campaign</Text>
+        <Text style={styles.title}>{this.props.title}</Text>
         <Text style={styles.variation}>Variation</Text>
         <TouchableHighlight onPress={() => this.props.reload()}>
         <Image style={styles.reload} source={require("../images/Reload.png")} />

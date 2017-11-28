@@ -13,7 +13,7 @@ export default class App extends React.Component {
     super();
     this.state = {
       showMenu: false,
-      view: "api",
+      view: "layout",
       leftLayout: "list",
       rightLayout: "list"
     };
@@ -36,35 +36,44 @@ export default class App extends React.Component {
 
   contentView() {
     switch (this.state.view) {
-      case 'layout':
-      return (
-        <View style={styles.splitview}>
-          <Layout type={this.state.leftLayout} />
-          <Layout type={this.state.rightLayout} />
-        </View>
-      );
-      case 'onboarding':
-      return (
-        <View style={styles.splitview}>
-          <LoginForm />
-          <LoginForm skip={true} socialMedia />
-        </View>
-      );
-      case 'api':
-      return (
-        <View style={{flex: 1}}>
-          <VWOAPIView />
-        </View>
-      );
+      case "layout":
+        return (
+          <View style={styles.splitview}>
+            <Layout type={this.state.leftLayout} />
+            <Layout type={this.state.rightLayout} />
+          </View>
+        );
+      case "onboarding":
+        return (
+          <View style={styles.splitview}>
+            <LoginForm />
+            <LoginForm skip={true} socialMedia />
+          </View>
+        );
+      case "api":
+        return (
+          <View style={{ flex: 1 }}>
+            <VWOAPIView />
+          </View>
+        );
     }
   }
-  
+  titleForNavBar() {
+    const currentKey = this.state.view;
+    return menuItems.filter(function(item) {
+      return item.key == currentKey;
+    })[0].title;
+  }
+
   render() {
     const menu = (
       <Menu
+        data={menuItems}
         style={styles.menu}
-        menuClose={() => this.setState({showMenu: false})}
-        menuSelect={(newView) => this.setState({showMenu: false, view:newView})}
+        menuClose={() => this.setState({ showMenu: false })}
+        menuSelect={newView =>
+          this.setState({ showMenu: false, view: newView })
+        }
       />
     );
     return (
@@ -75,6 +84,7 @@ export default class App extends React.Component {
         openMenuOffset={window.width / 3}
       >
         <NavBar
+          title={this.titleForNavBar()}
           reload={this.actionReload.bind(this)}
           menuClick={this.menuButtonTapped.bind(this)}
           style={styles.nav}
@@ -84,6 +94,25 @@ export default class App extends React.Component {
     );
   }
 }
+
+const menuItems = [
+  {
+    key: "layout",
+    title: "Layout Campaign"
+  },
+  {
+    key: "onboarding",
+    title: "On boarding Campaign"
+  },
+  {
+    key: "api",
+    title: "Enter API Key"
+  },
+  {
+    key: "clear",
+    title: "Clear Data"
+  }
+];
 
 const styles = StyleSheet.create({
   app: {

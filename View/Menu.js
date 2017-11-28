@@ -19,6 +19,7 @@ class MenuItem extends React.Component {
     );
   }
 }
+
 export default class Menu extends React.Component {
   menuSelected(val) {
     this.props.menuSelect(val);
@@ -26,33 +27,20 @@ export default class Menu extends React.Component {
   render() {
     return (
       <View style={styles.main}>
-          <View style={styles.header}>
-            <TouchableHighlight onPress={() => this.menuClose()}>
-              <Image source={require("../images/Close.png")} />
-            </TouchableHighlight>
-            <Text style={styles.title}>Choose a Campaign</Text>
-          </View>
+        <View style={styles.header}>
+          <TouchableHighlight onPress={() => this.menuClose()}>
+            <Image source={require("../images/Close.png")} />
+          </TouchableHighlight>
+          <Text style={styles.title}>Choose a Campaign</Text>
+        </View>
         <ScrollView style={styles.scroll}>
-          <MenuItem
-            title="Layout Campaign"
-            id="layout"
-            menuItemClick={this.menuSelected.bind(this)}
-          />
-          <MenuItem
-            title="On boarding Campaign"
-            id="onboarding"
-            menuItemClick={this.menuSelected.bind(this)}
-          />
-          <MenuItem
-            title="Enter API Key"
-            id="api"
-            menuItemClick={this.menuSelected.bind(this)}
-          />
-          <MenuItem
-            title="Clear Data"
-            id="clear"
-            // menuItemClick={this.menuSelected.bind(this)}
-          />
+          {this.props.data.map(item => (
+            <MenuItem
+              title={item.title}
+              id={item.key}
+              menuItemClick={this.menuSelected.bind(this)}
+            />
+          ))}
         </ScrollView>
       </View>
     );
