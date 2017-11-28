@@ -46,6 +46,8 @@ local.properties
 *.iml
 /android/
 
+# iOS
+/ios/Pods/
 # Node
 node_modules
 *.log
