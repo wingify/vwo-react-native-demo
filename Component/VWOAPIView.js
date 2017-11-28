@@ -16,7 +16,8 @@ export default class VWOAPIView extends React.Component {
     super(props);
     this.state = {
       api: "",
-    };
+      launched: false
+        };
     this.readFromClipboard();
   }
 
@@ -30,11 +31,13 @@ export default class VWOAPIView extends React.Component {
       alert("Please enter valid key");
       return;
     }
+    var that = this;
     VWO.launchWithCallback(key, function(error) {
       if (error) {
         console.log(error);
       } else {
         console.log("VWO launched with key " + key);
+        that.setState({ launched: true});
       }
     });
   }
@@ -43,19 +46,22 @@ export default class VWOAPIView extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.form}>
-          <View style={styles.inputGroup}>
-            <Text style={styles.label}>VWO API Key</Text>
-            <TextInput
-              defaultValue={this.state.api}
-              style={styles.input}
-              onChangeText={text => this.setState({ api: text })}
-              editable
-            />
-          </View>
+          {!this.state.launched && (
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>VWO API Key</Text>
+              <TextInput
+                defaultValue={this.state.api}
+                style={styles.input}
+                onChangeText={text => this.setState({ api: text })}
+                editable
+              />
+            </View>
+          )}
           <View style={styles.inputGroup}>
             <Button
-              defaultValue=""
-              title="Submit"
+              title={
+                this.state.launched ? "Launched successfully" : "Launch VWO"
+              }
               color="#27AE60"
               click={() => this.launchVWO(this.state.api)}
             />
@@ -67,13 +73,14 @@ export default class VWOAPIView extends React.Component {
 }
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#fff",
+    backgroundColor: "#fff"
   },
   form: {
-    marginHorizontal: "20%",
+    marginHorizontal: "20%"
   },
   inputGroup: {
     marginVertical: "2%"
