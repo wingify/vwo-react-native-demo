@@ -23,6 +23,10 @@ export default class App extends React.Component {
     });
   }
 
+  actionReload() {
+    console.log("Reload");
+  }
+
   updateContentView(newView) {
     var newState = { showMenu: false };
     if (newView) {
@@ -63,6 +67,7 @@ export default class App extends React.Component {
         openMenuOffset={window.width / 3}
       >
         <NavBar
+          reload={this.actionReload.bind(this)}
           menuClick={this.actionMenuTapped.bind(this)}
           style={styles.nav}
         />
