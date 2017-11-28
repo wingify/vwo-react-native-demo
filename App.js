@@ -44,7 +44,7 @@ export default class App extends React.Component {
       contentView = (
         <View style={styles.splitview}>
           <LoginForm />
-          <LoginForm skip/>
+          <LoginForm skip socialMedia/>
         </View>
       );
     }
@@ -85,6 +85,6 @@ const styles = StyleSheet.create({
   },
   splitview: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: "row"
   }
 });

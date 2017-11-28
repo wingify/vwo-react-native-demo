@@ -10,10 +10,24 @@ import {
 import Button from "../Component/Button";
 
 export default class LoginForm extends React.Component {
-  login() {
-    console.log("Login button clicked");
+  constructor() {
+    super();
+    this.state = {
+      showDetailsView: null
+    };
   }
+  loginCompletedView(text) {
+    return (
+      <View style={{ flex: 1, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center' }}>
+      <Text>{text}</Text>
+      </View>
+    )
+  }
+
   render() {
+    if (this.state.showDetailsView) {
+      return this.loginCompletedView(this.state.showDetailsView);
+    }
     return (
       <View style={styles.container}>
         <ScrollView style={styles.form}>
@@ -27,7 +41,11 @@ export default class LoginForm extends React.Component {
             <Text style={styles.secondaryLabel}>Forgot Password?</Text>
           </View>
           <View style={styles.inputGroup}>
-            <Button title="Login" color="#27AE60" click={() => this.login()} />
+            <Button
+              title="Login"
+              color="#27AE60"
+              click={() => this.setState({ showDetailsView: "login" })}
+            />
 
             {this.props.socialMedia && (
               <Text
@@ -43,7 +61,7 @@ export default class LoginForm extends React.Component {
               <Button
                 title="Login with Facebook"
                 color="#1D5196"
-                click={() => this.login()}
+                click={() => this.setState({ showDetailsView: "Logged in With FaceBook" })}
               />
             )}
           </View>
@@ -53,13 +71,13 @@ export default class LoginForm extends React.Component {
             </Text>
           </View>
           {this.props.skip && (
-          <View style={styles.inputGroup}>
-            <Button
-              title="Skip and Continue  ➔"
-              color="#AAA"
-              click={() => this.login()}
-            />
-          </View>
+            <View style={styles.inputGroup}>
+              <Button
+                title="Skip and Continue  ➔"
+                color="#AAA"
+                click={() => this.setState({ showDetailsView: "Login Skipped" })}
+                />
+            </View>
           )}
         </ScrollView>
       </View>
