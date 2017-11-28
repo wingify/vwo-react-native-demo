@@ -4,7 +4,7 @@ import Layout from "./View/Layout.js";
 import NavBar from "./Component/NavBar.js";
 import Menu from "./View/Menu.js";
 import LoginForm from "./Component/LoginForm.js";
-
+import VWOAPIView from "./Component/VWOAPIView.js";
 import SideMenu from "react-native-side-menu";
 const window = Dimensions.get("window");
 
@@ -13,7 +13,7 @@ export default class App extends React.Component {
     super();
     this.state = {
       showMenu: false,
-      view: "layout",
+      view: "api",
       leftLayout: "list",
       rightLayout: "list"
     };
@@ -34,36 +34,37 @@ export default class App extends React.Component {
     }
   }
 
-  updateContentView(newView) {
-    var newState = { showMenu: false };
-    if (newView) {
-      newState.view = newView;
-    }
-    this.setState(newState);
-  }
-
-  render() {
-    let contentView = null;
-    if (this.state.view == "layout") {
-      contentView = (
+  contentView() {
+    switch (this.state.view) {
+      case 'layout':
+      return (
         <View style={styles.splitview}>
           <Layout type={this.state.leftLayout} />
           <Layout type={this.state.rightLayout} />
         </View>
       );
-    } else if (this.state.view == "onboarding") {
-      contentView = (
+      case 'onboarding':
+      return (
         <View style={styles.splitview}>
           <LoginForm />
           <LoginForm skip={true} socialMedia />
         </View>
       );
+      case 'api':
+      return (
+        <View style={{flex: 1}}>
+          <VWOAPIView />
+        </View>
+      );
     }
-
+  }
+  
+  render() {
     const menu = (
       <Menu
         style={styles.menu}
-        menuSelect={this.updateContentView.bind(this)}
+        menuClose={() => this.setState({showMenu: false})}
+        menuSelect={(newView) => this.setState({showMenu: false, view:newView})}
       />
     );
     return (
@@ -78,7 +79,7 @@ export default class App extends React.Component {
           menuClick={this.menuButtonTapped.bind(this)}
           style={styles.nav}
         />
-        <View style={styles.container}>{contentView}</View>
+        <View style={styles.container}>{this.contentView()}</View>
       </SideMenu>
     );
   }

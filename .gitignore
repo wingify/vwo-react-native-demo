@@ -48,6 +48,8 @@ local.properties
 
 # iOS
 /ios/Pods/
+/ios/build/
+
 # Node
 node_modules
 *.log
