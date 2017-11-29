@@ -36,6 +36,7 @@ export default class Menu extends React.Component {
         <ScrollView style={styles.scroll}>
           {this.props.data.map(item => (
             <MenuItem
+              key={item.key}
               title={item.title}
               id={item.key}
               menuItemClick={this.menuSelected.bind(this)}

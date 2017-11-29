@@ -23,12 +23,6 @@ export default class App extends React.Component {
     };
   }
 
-  menuButtonTapped() {
-    this.setState({
-      showMenu: !this.state.showMenu
-    });
-  }
-
   actionReload() {
     console.log("Reload");
     var that = this;
@@ -134,7 +128,7 @@ export default class App extends React.Component {
         <NavBar
           title={this.titleForNavBar()}
           reload={this.actionReload.bind(this)}
-          menuClick={this.menuButtonTapped.bind(this)}
+          menuClick={() => this.setState({ showMenu: !this.state.showMenu })}
           style={styles.nav}
         />
         <View style={styles.container}>{this.contentView()}</View>
