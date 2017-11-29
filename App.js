@@ -24,7 +24,6 @@ export default class App extends React.Component {
   }
 
   actionReload() {
-    console.log("Reload");
     var that = this;
     if (this.state.view == "layout") {
       console.log("Reload layout");
