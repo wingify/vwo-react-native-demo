@@ -7,6 +7,7 @@ import LoginForm from "./Component/LoginForm.js";
 import VWOAPIView from "./Component/VWOAPIView.js";
 import SideMenu from "react-native-side-menu";
 import VWO from "vwo-react-native";
+import menuItems from './data/MenuItems.json';
 
 const window = Dimensions.get("window");
 
@@ -135,25 +136,6 @@ export default class App extends React.Component {
     );
   }
 }
-
-const menuItems = [
-  {
-    key: "layout",
-    title: "Layout Campaign"
-  },
-  {
-    key: "onboarding",
-    title: "On boarding Campaign"
-  },
-  {
-    key: "api",
-    title: "Enter API Key"
-  },
-  {
-    key: "clear",
-    title: "Clear Data"
-  }
-];
 
 const styles = StyleSheet.create({
   app: {

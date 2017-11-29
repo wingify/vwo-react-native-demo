@@ -1,0 +1,18 @@
+[
+  {
+    "key": "layout",
+    "title": "Layout Campaign"
+  },
+  {
+    "key": "onboarding",
+    "title": "On boarding Campaign"
+  },
+  {
+    "key": "api",
+    "title": "Enter API Key"
+  },
+  {
+    "key": "clear",
+    "title": "Clear Data"
+  }
+]
