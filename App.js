@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, StatusBar, Dimensions } from "react-native";
+import { StyleSheet, View, StatusBar, Dimensions, Text } from "react-native";
 import Layout from "./View/Layout.js";
 import NavBar from "./Component/NavBar.js";
 import Menu from "./View/Menu.js";
@@ -7,7 +7,7 @@ import LoginForm from "./Component/LoginForm.js";
 import VWOAPIView from "./Component/VWOAPIView.js";
 import SideMenu from "react-native-side-menu";
 import VWO from "vwo-react-native";
-import menuItems from './data/MenuItems.json';
+import menuItems from "./data/MenuItems.json";
 
 const window = Dimensions.get("window");
 
@@ -18,8 +18,8 @@ export default class App extends React.Component {
       showMenu: false,
       view: "layout",
       layout: "list",
-        skip: false,
-        socialMedia: false
+      skip: false,
+      socialMedia: false
     };
   }
 
@@ -54,7 +54,7 @@ export default class App extends React.Component {
         if (error) {
           console.log(error);
         } else {
-          console.log("Skip:"  + variation);
+          console.log("Skip:" + variation);
           that.setState({ skip: variation });
         }
       });
@@ -91,10 +91,16 @@ export default class App extends React.Component {
             />
           </View>
         );
-      case "api":
+        case "api":
         return (
           <View style={{ flex: 1 }}>
             <VWOAPIView />
+          </View>
+        );
+        case "clear":
+        return (
+          <View style={{ flex: 1, backgroundColor: "white" }}>
+            <Text>Clear Data</Text>
           </View>
         );
     }
