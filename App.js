@@ -12,17 +12,14 @@ import menuItems from "./data/MenuItems.json";
 const window = Dimensions.get("window");
 
 export default class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
+  state = {
       showMenu: false,
       view: "layout",
       layout: "list",
       skip: false,
       socialMedia: false
     };
-  }
-
+  
   actionReload() {
     var that = this;
     if (this.state.view == "layout") {

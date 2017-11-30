@@ -9,12 +9,9 @@ import {
 } from "react-native";
 
 export default class PhoneView extends React.Component {
-  constructor() {
-    super();
-    this.state = {
+  state = {
       showDetailsView: false,
     };
-  }
 
   render() {
     var styles = this.props.type == "list" ? listStyle : gridStyle;

@@ -5,17 +5,12 @@ import PhoneDetailView from "../Component/PhoneDetails";
 import phoneList from "../data/Phones";
 
 export default class Layout extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      showDetailsView: null
-    };
-  }
-
+  state = {
+    showDetailsView: null
+  };
   itemTapped(key) {
     this.setState({ showDetailsView: key });
   }
-
   phoneDetailView(key) {
     key = this.state.showDetailsView;
     data = phoneList.filter(function(item) {
@@ -49,7 +44,7 @@ export default class Layout extends React.Component {
               item={item}
               type={this.props.type}
               tapped={this.itemTapped.bind(this)}
-            />
+              />
           )}
         />
       </View>

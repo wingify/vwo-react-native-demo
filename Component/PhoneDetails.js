@@ -11,12 +11,9 @@ import {
 import Button from "../Component/Button";
 
 export default class PhoneDetailView extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      showDetailsView: false
-    };
-  }
+  state = {
+    showDetailsView: false
+  };
 
   render() {
     const item = this.props.item;
