@@ -6,28 +6,44 @@ import {
   ScrollView,
   TextInput,
   TouchableHighlight,
-  Clipboard
+  Clipboard,
+  AsyncStorage
 } from "react-native";
 import Button from "../Component/Button";
 import VWO from "vwo-react-native";
 
+global.apiStorageKey = "VWOAPIKey";
+
 export default class VWOAPIView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      apiKey: "",
-      launched: false
-    };
+  state = {
+    apiKey: "",
+    textInput: "",
+    launched: false
+  };
+
+  componentWillMount() {
     this.readFromClipboard();
+    this.loadAPIKeyFromPersistantStorage();
   }
 
   readFromClipboard = async () => {
     const clipboardString = await Clipboard.getString();
     const splitKey = clipboardString.split("-");
     if (splitKey.length == 2 && splitKey[0].length == 32) {
-      this.setState({ apiKey: clipboardString });
+      this.setState({ textInput: clipboardString });
     }
   };
+
+  loadAPIKeyFromPersistantStorage = async () => {
+    try {
+      const apiKey = await AsyncStorage.getItem(apiStorageKey)
+      if (apiKey !== null) {
+        this.setState({apiKey})
+      }
+    } catch (e) {
+      console.error('Failed to load API Key.')
+    }
+  }
 
   launchVWO(key) {
     if (key == "") {
@@ -41,9 +57,18 @@ export default class VWOAPIView extends React.Component {
       } else {
         console.log("VWO launched with key " + key);
         that.setState({ launched: true });
+        that.persistAPIKey(key);
       }
     });
   }
+
+  persistAPIKey = async key => {
+    try {
+      await AsyncStorage.setItem(APIKEY_STORAGE, key);
+    } catch (e) {
+      console.error("Failed to save key.");
+    }
+  };
 
   render() {
     return (
@@ -53,11 +78,12 @@ export default class VWOAPIView extends React.Component {
             <View style={styles.inputGroup}>
               <Text style={styles.label}>VWO API Key</Text>
               <TextInput
-                defaultValue={this.state.apiKey}
+                defaultValue={this.state.textInput}
                 style={styles.input}
-                onChangeText={text => this.setState({ apiKey: text })}
+                onChangeText={text => this.setState({ textInput: text })}
                 editable
               />
+              <Text style={styles.label}>{"Current " + this.state.apiKey}</Text>
             </View>
           )}
           <View style={styles.inputGroup}>
@@ -66,7 +92,7 @@ export default class VWOAPIView extends React.Component {
                 this.state.launched ? "Launched successfully" : "Launch VWO"
               }
               color="#27AE60"
-              click={() => this.launchVWO(this.state.apiKey)}
+              click={() => this.launchVWO(this.state.textInput)}
             />
           </View>
         </ScrollView>

@@ -1,5 +1,13 @@
 import React from "react";
-import { StyleSheet, View, StatusBar, Dimensions, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  StatusBar,
+  Dimensions,
+  Text,
+  AsyncStorage,
+  Alert
+} from "react-native";
 import Layout from "./View/Layout.js";
 import NavBar from "./Component/NavBar.js";
 import Menu from "./View/Menu.js";
@@ -13,13 +21,34 @@ const window = Dimensions.get("window");
 
 export default class App extends React.Component {
   state = {
-      showMenu: false,
-      view: "layout",
-      layout: "list",
-      skip: false,
-      socialMedia: false
-    };
-  
+    showMenu: false,
+    view: "layout",
+    layout: "list",
+    skip: false,
+    socialMedia: false,
+    apiKey: ""
+  };
+
+  componentDidMount() {
+    this.launchVWO();
+  }
+
+  launchVWO = async () => {
+    const apiKey = await AsyncStorage.getItem(apiStorageKey);
+    console.log("VWO launching " + apiKey);
+    if (apiKey == null) {
+      return;
+    }
+    this.setState({ apiKey });
+    VWO.launchWithCallback(apiKey, function(error) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("VWO launched with key " + apiKey);
+      }
+    });
+  };
+
   actionReload() {
     var that = this;
     if (this.state.view == "layout") {
@@ -81,13 +110,13 @@ export default class App extends React.Component {
             />
           </View>
         );
-        case "api":
+      case "api":
         return (
           <View style={{ flex: 1 }}>
             <VWOAPIView />
           </View>
         );
-        case "clear":
+      case "clear":
         return (
           <View style={{ flex: 1, backgroundColor: "white" }}>
             <Text>Clear Data</Text>
