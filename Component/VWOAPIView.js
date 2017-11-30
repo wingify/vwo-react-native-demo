@@ -15,7 +15,7 @@ export default class VWOAPIView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      api: "",
+      apiKey: "",
       launched: false
     };
     this.readFromClipboard();
@@ -25,7 +25,7 @@ export default class VWOAPIView extends React.Component {
     const clipboardString = await Clipboard.getString();
     const splitKey = clipboardString.split("-");
     if (splitKey.length == 2 && splitKey[0].length == 32) {
-      this.setState({ api: clipboardString });
+      this.setState({ apiKey: clipboardString });
     }
   };
 
@@ -53,9 +53,9 @@ export default class VWOAPIView extends React.Component {
             <View style={styles.inputGroup}>
               <Text style={styles.label}>VWO API Key</Text>
               <TextInput
-                defaultValue={this.state.api}
+                defaultValue={this.state.apiKey}
                 style={styles.input}
-                onChangeText={text => this.setState({ api: text })}
+                onChangeText={text => this.setState({ apiKey: text })}
                 editable
               />
             </View>
@@ -66,7 +66,7 @@ export default class VWOAPIView extends React.Component {
                 this.state.launched ? "Launched successfully" : "Launch VWO"
               }
               color="#27AE60"
-              click={() => this.launchVWO(this.state.api)}
+              click={() => this.launchVWO(this.state.apiKey)}
             />
           </View>
         </ScrollView>
