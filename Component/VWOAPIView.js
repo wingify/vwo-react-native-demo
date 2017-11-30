@@ -17,13 +17,16 @@ export default class VWOAPIView extends React.Component {
     this.state = {
       api: "",
       launched: false
-        };
+    };
     this.readFromClipboard();
   }
 
   readFromClipboard = async () => {
     const clipboardString = await Clipboard.getString();
-    this.setState({ api: clipboardString });
+    const splitKey = clipboardString.split("-");
+    if (splitKey.length == 2 && splitKey[0].length == 32) {
+      this.setState({ api: clipboardString });
+    }
   };
 
   launchVWO(key) {
@@ -37,7 +40,7 @@ export default class VWOAPIView extends React.Component {
         console.log(error);
       } else {
         console.log("VWO launched with key " + key);
-        that.setState({ launched: true});
+        that.setState({ launched: true });
       }
     });
   }
@@ -73,7 +76,6 @@ export default class VWOAPIView extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     flexDirection: "column",
