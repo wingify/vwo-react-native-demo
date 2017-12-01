@@ -40,12 +40,14 @@ export default class App extends React.Component {
     }
     console.log("VWO launching " + apiKey);
     this.setState({ apiKey });
-    VWO.setLogLevel(VWO.logLevelDebug);    
+    VWO.setLogLevel(VWO.logLevelDebug);
+    var that = this;
     VWO.launchWithCallback(apiKey, function(error) {
       if (error) {
         console.log(error);
       } else {
         console.log("VWO launched with key " + apiKey);
+        that.actionReload();
       }
     });
   };
@@ -58,11 +60,7 @@ export default class App extends React.Component {
         error,
         variation
       ) {
-        if (error) {
-          console.log(error);
-        } else {
-          that.setState({ layout: variation });
-        }
+        that.setState({ layout: variation });
       });
     }
     if (this.state.view == "onboarding") {
@@ -71,23 +69,15 @@ export default class App extends React.Component {
         error,
         variation
       ) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log("Skip:" + variation);
-          that.setState({ skip: variation });
-        }
+        console.log("Skip:" + variation);
+        that.setState({ skip: variation });
       });
       VWO.variationForKeyWithDefaultValue("socialMedia", false, function(
         error,
         variation
       ) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log("Social Media: " + variation);
-          that.setState({ socialMedia: variation });
-        }
+        console.log("Social Media: " + variation);
+        that.setState({ socialMedia: variation });
       });
     }
   }
