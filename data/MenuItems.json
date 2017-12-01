@@ -10,9 +10,5 @@
   {
     "key": "api",
     "title": "Enter API Key"
-  },
-  {
-    "key": "clear",
-    "title": "Clear Data"
   }
 ]
