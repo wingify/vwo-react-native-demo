@@ -12,13 +12,13 @@ import {
 import Button from "../Component/Button";
 import VWO from "vwo-react-native";
 
+// Stored only if VWO is launched successfully
 global.apiStorageKey = "VWOAPIKey";
 
 export default class VWOAPIView extends React.Component {
   state = {
-    apiKey: "",
-    textInput: "",
-    launched: false
+    apiKey: "", // set only if it is available in peristant storage
+    textInput: ""
   };
 
   componentWillMount() {
@@ -36,61 +36,63 @@ export default class VWOAPIView extends React.Component {
 
   loadAPIKeyFromPersistantStorage = async () => {
     try {
-      const apiKey = await AsyncStorage.getItem(apiStorageKey)
+      const apiKey = await AsyncStorage.getItem(apiStorageKey);
       if (apiKey !== null) {
-        this.setState({apiKey})
+        this.setState({ apiKey });
       }
     } catch (e) {
-      console.error('Failed to load API Key.')
+      console.error("Failed to load API Key.");
     }
-  }
+  };
 
-  launchVWO(key) {
-    if (key == "") {
-      alert("Please enter valid key");
+  launchVWO(apiKey) {
+    if (apiKey == "") {
+      alert("Please enter valid apiKey");
       return;
     }
     var that = this;
-    VWO.launchWithCallback(key, function(error) {
+    VWO.launchWithCallback(apiKey, function(error) {
       if (error) {
         console.log(error);
       } else {
-        console.log("VWO launched with key " + key);
-        that.setState({ launched: true });
-        that.persistAPIKey(key);
+        console.log("VWO launched with apiKey " + apiKey);
+        that.storeAPIKey(apiKey);
+        that.setState({ apiKey });
       }
     });
   }
 
-  persistAPIKey = async key => {
+  storeAPIKey = async key => {
     try {
-      await AsyncStorage.setItem(APIKEY_STORAGE, key);
+      await AsyncStorage.setItem(apiStorageKey, key);
     } catch (e) {
-      console.error("Failed to save key.");
+      console.error("Failed to save key. " + e);
     }
   };
 
   render() {
+    if (this.state.apiKey) {
+      return (
+        <View style={styles.container}>
+          <Text>VWO launched</Text>
+        </View>
+      );
+    }
     return (
       <View style={styles.container}>
         <ScrollView style={styles.form}>
-          {!this.state.launched && (
-            <View style={styles.inputGroup}>
-              <Text style={styles.label}>VWO API Key</Text>
-              <TextInput
-                defaultValue={this.state.textInput}
-                style={styles.input}
-                onChangeText={text => this.setState({ textInput: text })}
-                editable
-              />
-              <Text style={styles.label}>{"Current " + this.state.apiKey}</Text>
-            </View>
-          )}
+          <View style={styles.inputGroup}>
+            <Text style={styles.label}>VWO API Key</Text>
+            <TextInput
+              defaultValue={this.state.textInput}
+              style={styles.input}
+              onChangeText={text => this.setState({ textInput: text })}
+              editable
+            />
+          </View>
           <View style={styles.inputGroup}>
             <Button
-              title={
-                this.state.launched ? "Launched successfully" : "Launch VWO"
-              }
+              title="Launch VWO"
               color="#27AE60"
               click={() => this.launchVWO(this.state.textInput)}
             />
