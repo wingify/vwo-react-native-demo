@@ -35,10 +35,10 @@ export default class App extends React.Component {
 
   launchVWO = async () => {
     const apiKey = await AsyncStorage.getItem(apiStorageKey);
-    console.log("VWO launching " + apiKey);
     if (apiKey == null) {
       return;
     }
+    console.log("VWO launching " + apiKey);
     this.setState({ apiKey });
     VWO.launchWithCallback(apiKey, function(error) {
       if (error) {
