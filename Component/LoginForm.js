@@ -8,6 +8,7 @@ import {
   TouchableHighlight
 } from "react-native";
 import Button from "../Component/Button";
+import VWO from "vwo-react-native";
 
 export default class LoginForm extends React.Component {
   
@@ -24,6 +25,11 @@ export default class LoginForm extends React.Component {
         <Text>{text}</Text>
       </View>
     );
+  }
+
+  loginAction(info) {
+    this.setState({ showDetailsView: info})
+    VWO.markConversionForGoal("landingPage");
   }
 
   render() {
@@ -46,7 +52,7 @@ export default class LoginForm extends React.Component {
             <Button
               title="Login"
               color="#27AE60"
-              click={() => this.setState({ showDetailsView: "login" })}
+              click={() => this.loginAction("UserLoggedIn")}
             />
 
             {this.props.socialMedia && (
@@ -63,9 +69,7 @@ export default class LoginForm extends React.Component {
               <Button
                 title="Login with Facebook"
                 color="#1D5196"
-                click={() =>
-                  this.setState({ showDetailsView: "Logged in With FaceBook" })
-                }
+                click={() => this.loginAction("Logged in With FaceBook")}
               />
             )}
           </View>
@@ -79,9 +83,7 @@ export default class LoginForm extends React.Component {
               <Button
                 title="Skip and Continue  ➔"
                 color="#AAA"
-                click={() =>
-                  this.setState({ showDetailsView: "Login Skipped" })
-                }
+                click={() => this.loginAction("Logged skipped")}
               />
             </View>
           )}

@@ -51,6 +51,7 @@ export default class VWOAPIView extends React.Component {
       return;
     }
     var that = this;
+    VWO.setLogLevel(VWO.logLevelDebug);    
     VWO.launchWithCallback(apiKey, function(error) {
       if (error) {
         console.log(error);

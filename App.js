@@ -40,6 +40,7 @@ export default class App extends React.Component {
     }
     console.log("VWO launching " + apiKey);
     this.setState({ apiKey });
+    VWO.setLogLevel(VWO.logLevelDebug);    
     VWO.launchWithCallback(apiKey, function(error) {
       if (error) {
         console.log(error);
