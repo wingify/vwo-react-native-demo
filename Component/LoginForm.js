@@ -29,7 +29,7 @@ export default class LoginForm extends React.Component {
 
   loginAction(info) {
     this.setState({ showDetailsView: info})
-    VWO.markConversionForGoal("landingPage");
+    VWO.trackConversion("landingPage");
   }
 
   render() {
