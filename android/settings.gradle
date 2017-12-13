@@ -1,0 +1,5 @@
+rootProject.name = 'demo'
+include ':vwo-react-native'
+project(':vwo-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/vwo-react-native/android')
+
+include ':app'
