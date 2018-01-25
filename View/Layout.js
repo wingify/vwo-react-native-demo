@@ -3,14 +3,22 @@ import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 import PhoneView from "../Component/PhoneView";
 import PhoneDetailView from "../Component/PhoneDetails";
 import phoneList from "../data/Phones";
+import VWO from "vwo-react-native";
 
 export default class Layout extends React.Component {
   state = {
     showDetailsView: null
   };
+  
   itemTapped(key) {
+    var selectedObject = phoneList.filter(function (el) {
+      return el.key === key;
+    })[0];
+    console.log("Item tapped " + key + " " + selectedObject.price);
     this.setState({ showDetailsView: key });
+    VWO.trackConversionWithValue("productView", selectedObject.price);
   }
+
   phoneDetailView(key) {
     key = this.state.showDetailsView;
     data = phoneList.filter(function(item) {

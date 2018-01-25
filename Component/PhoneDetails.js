@@ -46,14 +46,14 @@ export default class PhoneDetailView extends React.Component {
                 style={styles.button}
                 title="Buy Now"
                 color="#AE7827"
-                click={() => this.login()}
+                click={() => console.log("Buy")}
               />
             </View>
             <View style={styles.button}>
               <Button
                 title="Add to Cart"
                 color="#AFB52C"
-                click={() => this.login()}
+                click={() => console.log("Add to Cart")}
               />
             </View>
           </View>
