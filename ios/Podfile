@@ -6,7 +6,7 @@ target 'demo' do
   # use_frameworks!
 
   # Pods for demo
-pod 'VWO', '~>2.0.0'
+pod 'VWO', '~>2.0.1'
 
 end
 

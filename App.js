@@ -42,43 +42,26 @@ export default class App extends React.Component {
     this.setState({ apiKey });
     VWO.setLogLevel(VWO.logLevelDebug);
     var that = this;
-    VWO.launchWithCallback(apiKey, function(error) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log("VWO launched with key " + apiKey);
+    VWO.launch(apiKey).then(() => {
+      console.log("Launch success " + apiKey);
         that.actionReload();
-      }
     });
   };
 
-  actionReload() {
+  actionReload = async () => {
     var that = this;
     if (this.state.view == "layout") {
-      console.log("Reload layout");
-      VWO.variationForKeyWithDefaultValue("layout", "list", function(
-        error,
-        variation
-      ) {
-        that.setState({ layout: variation });
-      });
+      var layout = await VWO.variationForKeyWithDefaultValue("layout", "list");
+      console.log("Reload layout " + layout);
+      this.setState({ layout });
     }
     if (this.state.view == "onboarding") {
       console.log("Reload onboarding");
-      VWO.variationForKeyWithDefaultValue("skip", false, function(
-        error,
-        variation
-      ) {
-        console.log("Skip:" + variation);
-        that.setState({ skip: variation });
-      });
-      VWO.variationForKeyWithDefaultValue("socialMedia", false, function(
-        error,
-        variation
-      ) {
-        console.log("Social Media: " + variation);
-        that.setState({ socialMedia: variation });
-      });
+      var skip = await VWO.variationForKeyWithDefaultValue("skip", false);
+      this.setState({ skip });
+      
+      var socialMedia = await VWO.variationForKeyWithDefaultValue("socialMedia", false);
+      this.setState({ socialMedia });      
     }
   }
 
