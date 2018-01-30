@@ -3,7 +3,7 @@
 ### Installation
 
 ```
-cd vwo-react-remo
+cd vwo-react-native-demo
 npm install
 ```
 
