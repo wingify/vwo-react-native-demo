@@ -53,7 +53,7 @@ export default class VWOAPIView extends React.Component {
     var that = this;
     VWO.setLogLevel(VWO.logLevelDebug);    
 
-    VWO.launch(apiKey).then(() => {
+    VWO.launch(apiKey, {}).then(() => {
       console.log("Launch success " + apiKey);
       that.storeAPIKey(apiKey);
       that.setState({ apiKey });

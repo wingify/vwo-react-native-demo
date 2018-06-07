@@ -42,7 +42,7 @@ export default class App extends React.Component {
     this.setState({ apiKey });
     VWO.setLogLevel(VWO.logLevelDebug);
     var that = this;
-    VWO.launch(apiKey).then(() => {
+    VWO.launch(apiKey, {}).then(() => {
       console.log("Launch success " + apiKey);
         that.actionReload();
     });
@@ -51,16 +51,16 @@ export default class App extends React.Component {
   actionReload = async () => {
     var that = this;
     if (this.state.view == "layout") {
-      var layout = await VWO.variationForKeyWithDefaultValue("layout", "list");
+      var layout = await VWO.stringForKey("layout", "list");
       console.log("Reload layout " + layout);
       this.setState({ layout });
     }
     if (this.state.view == "onboarding") {
       console.log("Reload onboarding");
-      var skip = await VWO.variationForKeyWithDefaultValue("skip", false);
+      var skip = await VWO.boolForKey("skip", false);
       this.setState({ skip });
       
-      var socialMedia = await VWO.variationForKeyWithDefaultValue("socialMedia", false);
+      var socialMedia = await VWO.boolForKey("socialMedia", false);
       this.setState({ socialMedia });      
     }
   }

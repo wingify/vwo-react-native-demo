@@ -1,12 +1,26 @@
 PODS:
-  - VWO (2.0.1)
+  - Socket.IO-Client-Swift (13.2.0):
+    - Starscream (~> 3.0.2)
+  - Starscream (3.0.5)
+  - VWO (2.4.1):
+    - VWO/All (= 2.4.1)
+  - VWO/All (2.4.1):
+    - Socket.IO-Client-Swift (~> 13.1)
 
 DEPENDENCIES:
-  - VWO (~> 2.0.1)
+  - VWO
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Socket.IO-Client-Swift
+    - Starscream
+    - VWO
 
 SPEC CHECKSUMS:
-  VWO: 7d57290962f756324102d3923a491d0b46489e29
+  Socket.IO-Client-Swift: 4698ea9eb2955eecf7fdf06c487ff1597e4cd779
+  Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
+  VWO: d9b270ea749142f5b477febec6b66d60c4b8245d
 
-PODFILE CHECKSUM: 42f09951cf5e4d420156b67361f95ad6ae31d6ee
+PODFILE CHECKSUM: ffff990de4e3ebe5e96d5ac5731c9706f48448c7
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3
