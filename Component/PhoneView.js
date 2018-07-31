@@ -14,7 +14,6 @@ export default class PhoneView extends React.Component {
     };
 
   render() {
-    var styles = this.props.type == "list" ? listStyle : gridStyle;
     const item = this.props.item
     return (
       <TouchableHighlight style={styles.container} onPress={() => this.props.tapped(item.key)}>
@@ -35,7 +34,7 @@ export default class PhoneView extends React.Component {
   }
 }
 
-const listStyle = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
@@ -47,40 +46,6 @@ const listStyle = StyleSheet.create({
     marginRight: "10%"
   },
   phoneImage: { width: 50, height: 100 },
-  details: {
-    paddingTop: "5%"
-  },
-  name: {
-    fontSize: 12
-  },
-  brand: {
-    color: "#AAAAAA",
-    fontSize: 10
-  },
-  price: {
-    color: "#BC1C1C",
-    marginTop: 10,
-    fontSize: 18
-  }
-});
-
-const gridStyle = StyleSheet.create({
-  container: {
-    flex: 0.5,
-    flexDirection: "column",
-    paddingVertical: "2%",
-    paddingHorizontal: "5%"
-  },
-  imageView: {
-    alignItems: "center",
-    borderWidth: StyleSheet.hairlineWidth,
-    paddingVertical: "10%"
-  },
-  phoneImage: {
-    flex: 0.5,
-    width: 50,
-    height: 100
-  },
   details: {
     paddingTop: "5%"
   },

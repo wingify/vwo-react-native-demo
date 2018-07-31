@@ -40,17 +40,16 @@ export default class Layout extends React.Component {
     return (
       <View style={styles.container}>
         <FlatList
-          key={this.props.type == "list" ? 1 : 2}
+          key="1"
           style={styles.half}
           data={phoneList}
-          numColumns={this.props.type == "list" ? 1 : 2}
+          numColumns="1"
           ItemSeparatorComponent={() => (
             <View style={{ height: 1, backgroundColor: "#CED0CE" }} />
           )}
           renderItem={({ item }) => (
             <PhoneView
               item={item}
-              type={this.props.type}
               tapped={this.itemTapped.bind(this)}
               />
           )}

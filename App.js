@@ -69,15 +69,13 @@ export default class App extends React.Component {
     switch (this.state.view) {
       case "layout":
         return (
-          <View style={styles.splitview}>
-            <Layout type="list" />
-            <Layout type={this.state.layout} />
+          <View style={{ flex: 1 }}>
+            <Layout />
           </View>
         );
       case "onboarding":
         return (
-          <View style={styles.splitview}>
-            <LoginForm />
+          <View style={{ flex: 1 }}>
             <LoginForm
               skip={this.state.skip}
               socialMedia={this.state.socialMedia}
@@ -88,12 +86,6 @@ export default class App extends React.Component {
         return (
           <View style={{ flex: 1 }}>
             <VWOAPIView />
-          </View>
-        );
-      case "clear":
-        return (
-          <View style={{ flex: 1, backgroundColor: "white" }}>
-            <Text>Clear Data</Text>
           </View>
         );
     }
@@ -145,10 +137,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   container: {
-    flex: 7
-  },
-  splitview: {
-    flex: 1,
-    flexDirection: "row"
+    flex: 9
   }
 });
