@@ -5,14 +5,8 @@ import houseList from "../data/HouseList";
 import VWO from "vwo-react-native";
 
 export default class Housing extends React.Component {
-  state = {
-    showDetailsView: null
-  };
   
   render() {
-    if (this.state.showDetailsView) {
-      return <View />//Show alert
-    }
     return (
       <View style={styles.container}>
         <FlatList
