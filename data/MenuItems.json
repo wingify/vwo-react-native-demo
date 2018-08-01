@@ -1,11 +1,11 @@
 [
   {
     "key": "layout",
-    "title": "Layout Campaign"
+    "title": "Sorting Campaign"
   },
   {
-    "key": "onboarding",
-    "title": "On boarding Campaign"
+    "key": "variable",
+    "title": "Variable Campaign"
   },
   {
     "key": "api",

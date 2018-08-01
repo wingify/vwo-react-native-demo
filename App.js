@@ -9,6 +9,7 @@ import {
   Alert
 } from "react-native";
 import Layout from "./View/Layout.js";
+import Housing from "./View/Housing.js";
 import NavBar from "./Component/NavBar.js";
 import Menu from "./View/Menu.js";
 import LoginForm from "./Component/LoginForm.js";
@@ -73,13 +74,10 @@ export default class App extends React.Component {
             <Layout />
           </View>
         );
-      case "onboarding":
+      case "variable":
         return (
           <View style={{ flex: 1 }}>
-            <LoginForm
-              skip={this.state.skip}
-              socialMedia={this.state.socialMedia}
-            />
+            <Housing />
           </View>
         );
       case "api":
