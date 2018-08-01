@@ -6,8 +6,11 @@ import {
   Alert,
   Image,
   FlatList,
+  Dimensions,
+  ImageBackground,
   TouchableHighlight
 } from "react-native";
+const window = Dimensions.get("window");
 
 export default class HouseView extends React.Component {
   state = {
@@ -32,7 +35,13 @@ export default class HouseView extends React.Component {
       <TouchableHighlight style={styles.container} onPress={this.itemTapped}>
         <View style={styles.container}>
           <View style={styles.imageView}>
-            <Image style={styles.phoneImage} source={item.image} />
+            <ImageBackground style={styles.backgroundImage} source={item.image}>
+                <View style={styles.blackHighlight}> 
+                  <Text style={styles.houseprice}> ${item.price} </Text>
+                  <Text style={styles.housename}> ${item.name} </Text>
+                  <Text style={styles.housetype}> Residential </Text>
+                </View>
+            </ImageBackground>
           </View>
         </View>
       </TouchableHighlight>
@@ -44,12 +53,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    // paddingVertical: "2%",
+    paddingVertical: "2%",
     paddingHorizontal: "5%"
   },
-  imageView: {
-    // backgroundColor: "#eee",
-    // marginRight: "10%"
+  blackHighlight: {
+    width: '100%', 
+    height: 70, 
+    position: 'absolute',
+    bottom: 0,
+    backgroundColor: 'rgba(12, 12, 12, 0.5)'
   },
-  phoneImage: { width: 100, height: 100 }
+  backgroundImage: { width: window.width * 0.4, height: window.width * 0.4 },
+  houseprice: {
+    color: "#FFFFFF",
+    fontSize: 20
+  },
+  housename: {
+    color: "#FFFFFF",
+    fontSize: 14,
+  },
+  housetype: {
+    color: "#FFFFFF",
+    fontSize: 14
+  }
 });

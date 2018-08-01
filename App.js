@@ -12,9 +12,7 @@ import {
 } from "react-native";
 import Layout from "./View/Layout.js";
 import Housing from "./View/Housing.js";
-import NavBar from "./Component/NavBar.js";
 import Menu from "./View/Menu.js";
-import LoginForm from "./Component/LoginForm.js";
 import VWOAPIView from "./Component/VWOAPIView.js";
 import SideMenu from "react-native-side-menu";
 import VWO from "vwo-react-native";
