@@ -112,7 +112,7 @@ export default class App extends React.Component {
         isOpen={this.state.showMenu}
         style={styles.app}
         menu={menu}
-        openMenuOffset={window.width / 3}
+        openMenuOffset={window.width * 0.75}
       >
         <NavBar
           title={this.titleForNavBar()}
