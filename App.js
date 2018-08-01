@@ -6,7 +6,9 @@ import {
   Dimensions,
   Text,
   AsyncStorage,
-  Alert
+  Alert,
+  Image,
+  TouchableHighlight
 } from "react-native";
 import Layout from "./View/Layout.js";
 import Housing from "./View/Housing.js";
@@ -17,6 +19,7 @@ import VWOAPIView from "./Component/VWOAPIView.js";
 import SideMenu from "react-native-side-menu";
 import VWO from "vwo-react-native";
 import menuItems from "./data/MenuItems.json";
+import NavigationBar from 'react-native-navbar';
 
 const window = Dimensions.get("window");
 
@@ -96,6 +99,7 @@ export default class App extends React.Component {
     })[0].title;
   }
 
+
   render() {
     const menu = (
       <Menu
@@ -107,6 +111,7 @@ export default class App extends React.Component {
         }
       />
     );
+
     return (
       <SideMenu
         isOpen={this.state.showMenu}
@@ -114,11 +119,20 @@ export default class App extends React.Component {
         menu={menu}
         openMenuOffset={window.width * 0.75}
       >
-        <NavBar
-          title={this.titleForNavBar()}
-          reload={this.actionReload.bind(this)}
-          menuClick={() => this.setState({ showMenu: !this.state.showMenu })}
-          style={styles.nav}
+        <NavigationBar
+          title={{title: this.titleForNavBar()}}
+          leftButton={
+            <TouchableHighlight
+               onPress={() => this.setState({ showMenu: !this.state.showMenu })}>
+               <Image style={styles.menu} source={require("./images/Menu.png")} />
+            </TouchableHighlight>
+          }
+          rightButton={
+            <TouchableHighlight
+               onPress={() => this.setState({ showMenu: !this.state.showMenu })}>
+               <Image style={styles.menu} source={require("./images/Reload.png")} />
+            </TouchableHighlight>
+          }
         />
         <View style={styles.container}>{this.contentView()}</View>
       </SideMenu>
