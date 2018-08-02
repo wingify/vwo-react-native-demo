@@ -50,15 +50,15 @@ const styles = StyleSheet.create({
     paddingTop: "5%"
   },
   name: {
-    fontSize: 12
+    fontSize: 18
   },
   brand: {
     color: "#AAAAAA",
-    fontSize: 10
+    fontSize: 13
   },
   price: {
     color: "#BC1C1C",
     marginTop: 10,
-    fontSize: 18
+    fontSize: 22
   }
 });
