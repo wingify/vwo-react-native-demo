@@ -11,7 +11,7 @@ import {
   TouchableHighlight
 } from "react-native";
 
-import Layout from "./View/Layout.js";
+import SortingView from "./View/SortingView.js";
 import Housing from "./View/Housing.js";
 import Menu from "./View/Menu.js";
 import VWOAPIView from "./Component/VWOAPIView.js";
@@ -25,24 +25,22 @@ const window = Dimensions.get("window");
 export default class App extends React.Component {
   state = {
     showMenu: false,
-    view: "layout",
-    layout: "list",
-    apiKey: ""
+    view: "sorting",
   };
 
 
   actionReload = async () => {
-    if (this.state.view == "layout") {
+    if (this.state.view == "sorting") {
       this.phoneList.sortPhoneList();
     }
   }
 
   contentView() {
     switch (this.state.view) {
-      case "layout":
+      case "sorting":
         return (
           <View style={{ flex: 1 }}>
-            <Layout ref={child => {this.phoneList = child}}/>
+            <SortingView ref={child => {this.phoneList = child}}/>
           </View>
         );
       case "variable":
