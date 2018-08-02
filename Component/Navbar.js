@@ -24,7 +24,7 @@ export default class Navbar extends React.Component {
           }
           rightButton={
             <TouchableHighlight
-              onPress={() => this.props.reloadClick()}>
+              onPress={() => this.props.reload()}>
                <Image style={styles.menu} source={require("../images/Reload.png")} />
             </TouchableHighlight>
           }

@@ -117,7 +117,11 @@ export default class App extends React.Component {
         menu={menu}
         openMenuOffset={window.width * 0.75}
       >
-        <Navbar />
+        <Navbar
+          title={this.titleForNavBar()}
+          reload={this.actionReload.bind(this)}
+          menuClick={() => this.setState({ showMenu: !this.state.showMenu })}
+        />
         <View style={styles.container}>{this.contentView()}</View>
       </SideMenu>
     );
