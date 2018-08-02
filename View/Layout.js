@@ -7,21 +7,24 @@ import VWO from "vwo-react-native";
 
 export default class Layout extends React.Component {
   state = {
-    showDetailsView: null
+    showDetailsView: null,
+    phones: phoneList
   };
-  
+
   sortPhoneList() {
-    //Fetch variation from VWO
-    const variation = "Control"
+    var newList = phoneList
+    const variation = "Variation-1"
+    // const variation = "Control"
     if (variation == "Control") {
-      phoneList.sort(function(a,b) {
-          return (a.name - b.name);
+      newList.sort(function(a,b) {
+        return ((a.name > b.name) ? 0 : -1 );
       });
-    } else if (variation == "Control") {
-      phoneList.sort(function(a,b) {
-        return ((a.price < b.price) ? -1 : ((a.price > b.price) ? 1 : 0));
+    } else if (variation == "Variation-1") {
+      newList.sort(function(a,b) {
+        return ((a.price > b.price) ? 0 : -1 );
       });      
     }
+    this.setState({ phones: newList })
   }
 
   itemTapped(key) {
@@ -55,8 +58,9 @@ export default class Layout extends React.Component {
       <View style={styles.container}>
         <FlatList
           key="1"
+          extraData={this.state}
           style={styles.half}
-          data={phoneList}
+          data={this.state.phones}
           numColumns="1"
           ItemSeparatorComponent={() => (
             <View style={{ height: 1, backgroundColor: "#CED0CE" }} />

@@ -10,6 +10,7 @@ import {
   Image,
   TouchableHighlight
 } from "react-native";
+
 import Layout from "./View/Layout.js";
 import Housing from "./View/Housing.js";
 import Menu from "./View/Menu.js";
@@ -31,19 +32,8 @@ export default class App extends React.Component {
 
 
   actionReload = async () => {
-    var that = this;
     if (this.state.view == "layout") {
-      var layout = await VWO.stringForKey("layout", "list");
-      console.log("Reload layout " + layout);
-      this.setState({ layout });
-    }
-    if (this.state.view == "onboarding") {
-      console.log("Reload onboarding");
-      var skip = await VWO.boolForKey("skip", false);
-      this.setState({ skip });
-      
-      var socialMedia = await VWO.boolForKey("socialMedia", false);
-      this.setState({ socialMedia });      
+      this.phoneList.sortPhoneList();
     }
   }
 
@@ -52,7 +42,7 @@ export default class App extends React.Component {
       case "layout":
         return (
           <View style={{ flex: 1 }}>
-            <Layout />
+            <Layout ref={child => {this.phoneList = child}}/>
           </View>
         );
       case "variable":
