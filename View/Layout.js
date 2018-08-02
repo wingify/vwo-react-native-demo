@@ -10,6 +10,20 @@ export default class Layout extends React.Component {
     showDetailsView: null
   };
   
+  sortPhoneList() {
+    //Fetch variation from VWO
+    const variation = "Control"
+    if (variation == "Control") {
+      phoneList.sort(function(a,b) {
+          return (a.name - b.name);
+      });
+    } else (variation == "Control") {
+      phoneList.sort(function(a,b) {
+        return ((a.price < b.price) ? -1 : ((a.price > b.price) ? 1 : 0));
+      });      
+    }
+  }
+
   itemTapped(key) {
     var selectedObject = phoneList.filter(function (el) {
       return el.key === key;
