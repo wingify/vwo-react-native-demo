@@ -17,7 +17,7 @@ import VWOAPIView from "./Component/VWOAPIView.js";
 import SideMenu from "react-native-side-menu";
 import VWO from "vwo-react-native";
 import menuItems from "./data/MenuItems.json";
-import NavigationBar from 'react-native-navbar';
+import Navbar from "./Component/Navbar.js";
 
 const window = Dimensions.get("window");
 
@@ -117,21 +117,7 @@ export default class App extends React.Component {
         menu={menu}
         openMenuOffset={window.width * 0.75}
       >
-        <NavigationBar
-          title={{title: this.titleForNavBar()}}
-          leftButton={
-            <TouchableHighlight
-               onPress={() => this.setState({ showMenu: !this.state.showMenu })}>
-               <Image style={styles.menu} source={require("./images/Menu.png")} />
-            </TouchableHighlight>
-          }
-          rightButton={
-            <TouchableHighlight
-               onPress={() => this.setState({ showMenu: !this.state.showMenu })}>
-               <Image style={styles.menu} source={require("./images/Reload.png")} />
-            </TouchableHighlight>
-          }
-        />
+        <Navbar />
         <View style={styles.container}>{this.contentView()}</View>
       </SideMenu>
     );
