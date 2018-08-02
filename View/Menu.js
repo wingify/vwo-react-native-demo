@@ -4,18 +4,18 @@ import {
   Text,
   View,
   ScrollView,
-  TouchableHighlight,
+  TouchableOpacity,
   Image
 } from "react-native";
 
 class MenuItem extends React.Component {
   render() {
     return (
-      <TouchableHighlight
+      <TouchableOpacity
         onPress={() => this.props.menuItemClick(this.props.id)}
       >
         <Text style={styles.option}>{this.props.title}</Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }
@@ -28,9 +28,9 @@ export default class Menu extends React.Component {
     return (
       <View style={styles.main}>
         <View style={styles.header}>
-          <TouchableHighlight onPress={() => this.props.menuClose()}>
+          <TouchableOpacity onPress={() => this.props.menuClose()}>
             <Image source={require("../images/Close.png")} />
-          </TouchableHighlight>
+          </TouchableOpacity>
           <Text style={styles.title}>Choose a Campaign</Text>
         </View>
         <ScrollView style={styles.scroll}>

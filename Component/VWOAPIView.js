@@ -5,7 +5,6 @@ import {
   View,
   ScrollView,
   TextInput,
-  TouchableHighlight,
   Clipboard,
   AsyncStorage
 } from "react-native";

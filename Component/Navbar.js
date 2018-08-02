@@ -5,7 +5,7 @@ import {
   View,
   Image,
   FlatList,
-  TouchableHighlight
+  TouchableOpacity
 } from "react-native";
 import NavigationBar from 'react-native-navbar';
 
@@ -15,18 +15,19 @@ export default class Navbar extends React.Component {
     const item = this.props.item
     return (
         <NavigationBar
-          title={this.props.title}
+          tintColor = '#DEDEDE'
+          title={{title: this.props.title}}
           leftButton={
-            <TouchableHighlight
+            <TouchableOpacity
               onPress={() => this.props.menuClick()}>
                <Image style={styles.menu} source={require("../images/Menu.png")} />
-            </TouchableHighlight>
+            </TouchableOpacity>
           }
           rightButton={
-            <TouchableHighlight
+            <TouchableOpacity
               onPress={() => this.props.reload()}>
                <Image style={styles.menu} source={require("../images/Reload.png")} />
-            </TouchableHighlight>
+            </TouchableOpacity>
           }
         />
     );

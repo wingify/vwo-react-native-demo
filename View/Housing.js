@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, FlatList, TouchableHighlight } from "react-native";
+import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 import HouseView from "../Component/HouseView";
 import houseList from "../data/HouseList";
 import VWO from "vwo-react-native";

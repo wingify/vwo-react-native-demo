@@ -6,7 +6,7 @@ import {
   ScrollView,
   Image,
   FlatList,
-  TouchableHighlight
+  TouchableOpacity
 } from "react-native";
 import Button from "../Component/Button";
 
@@ -19,9 +19,9 @@ export default class PhoneDetailView extends React.Component {
     const item = this.props.item;
     return (
       <View style={styles.container}>
-        <TouchableHighlight onPress={() => this.props.onClose()}>
+        <TouchableOpacity onPress={() => this.props.onClose()}>
           <Image style={styles.close} source={require("../images/Close.png")} />
-        </TouchableHighlight>
+        </TouchableOpacity>
 
         <ScrollView>
           <View style={styles.scrollcontainer}>

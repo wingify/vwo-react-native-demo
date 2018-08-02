@@ -1,16 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, TouchableHighlight } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-export default class Button extends React.Component {
+export default class Button123 extends React.Component {
   render() {
     const combineStyles = StyleSheet.flatten([styles.container, {backgroundColor: this.props.color}]);
     return (
-      <TouchableHighlight
+      <TouchableOpacity
         style={combineStyles}
         onPress={() => this.props.click()}
       >
         <Text style={styles.text}>{this.props.title}</Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }

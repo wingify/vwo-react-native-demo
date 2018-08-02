@@ -8,7 +8,7 @@ import {
   FlatList,
   Dimensions,
   ImageBackground,
-  TouchableHighlight
+  TouchableOpacity
 } from "react-native";
 const window = Dimensions.get("window");
 
@@ -32,7 +32,7 @@ export default class HouseView extends React.Component {
   render() {
     const item = this.props.item
     return (
-      <TouchableHighlight style={styles.container} onPress={this.itemTapped}>
+      <TouchableOpacity style={styles.container} onPress={this.itemTapped}>
         <View style={styles.container}>
           <View style={styles.imageView}>
             <ImageBackground style={styles.backgroundImage} source={item.image}>
@@ -44,7 +44,7 @@ export default class HouseView extends React.Component {
             </ImageBackground>
           </View>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }

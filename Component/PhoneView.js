@@ -5,7 +5,7 @@ import {
   View,
   Image,
   FlatList,
-  TouchableHighlight
+  TouchableOpacity
 } from "react-native";
 
 export default class PhoneView extends React.Component {
@@ -16,7 +16,7 @@ export default class PhoneView extends React.Component {
   render() {
     const item = this.props.item
     return (
-      <TouchableHighlight style={styles.container} onPress={() => this.props.tapped(item.key)}>
+      <TouchableOpacity style={styles.container} onPress={() => this.props.tapped(item.key)}>
         <View style={styles.container}>
           <View style={styles.imageView}>
             <Image style={styles.phoneImage} source={item.image} />
@@ -29,7 +29,7 @@ export default class PhoneView extends React.Component {
             <Text style={styles.price}> ${item.price} </Text>
           </View>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }
