@@ -17,7 +17,7 @@ export default class Layout extends React.Component {
       phoneList.sort(function(a,b) {
           return (a.name - b.name);
       });
-    } else (variation == "Control") {
+    } else if (variation == "Control") {
       phoneList.sort(function(a,b) {
         return ((a.price < b.price) ? -1 : ((a.price > b.price) ? 1 : 0));
       });      

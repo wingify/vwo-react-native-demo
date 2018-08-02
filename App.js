@@ -29,24 +29,6 @@ export default class App extends React.Component {
     apiKey: ""
   };
 
-  componentDidMount() {
-    this.launchVWO();
-  }
-
-  launchVWO = async () => {
-    const apiKey = await AsyncStorage.getItem(apiStorageKey);
-    if (apiKey == null) {
-      return;
-    }
-    console.log("VWO launching " + apiKey);
-    this.setState({ apiKey });
-    VWO.setLogLevel(VWO.logLevelDebug);
-    var that = this;
-    VWO.launch(apiKey, {}).then(() => {
-      console.log("Launch success " + apiKey);
-        that.actionReload();
-    });
-  };
 
   actionReload = async () => {
     var that = this;
