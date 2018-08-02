@@ -4,8 +4,6 @@ import {
   Text,
   View,
   Alert,
-  Image,
-  FlatList,
   Dimensions,
   ImageBackground,
   TouchableOpacity

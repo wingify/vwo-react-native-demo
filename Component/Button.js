@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-export default class Button123 extends React.Component {
+export default class Button extends React.Component {
   render() {
     const combineStyles = StyleSheet.flatten([styles.container, {backgroundColor: this.props.color}]);
     return (
