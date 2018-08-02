@@ -26,8 +26,6 @@ export default class App extends React.Component {
     showMenu: false,
     view: "layout",
     layout: "list",
-    skip: false,
-    socialMedia: false,
     apiKey: ""
   };
 
