@@ -5,7 +5,7 @@ import PhoneDetailView from "../Component/PhoneDetails";
 import phoneList from "../data/PhoneList";
 import VWO from "vwo-react-native";
 
-export default class Layout extends React.Component {
+export default class PhoneListView extends React.Component {
   state = {
     showDetailsView: null,
     phones: phoneList

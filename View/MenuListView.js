@@ -20,7 +20,7 @@ class MenuItem extends React.Component {
   }
 }
 
-export default class Menu extends React.Component {
+export default class MenuListView extends React.Component {
   menuSelected(val) {
     this.props.menuSelect(val);
   }

@@ -4,7 +4,7 @@ import HouseView from "../Component/HouseView";
 import houseList from "../data/HouseList";
 import VWO from "vwo-react-native";
 
-export default class Housing extends React.Component {
+export default class HouseListView extends React.Component {
   render() {
     return (
       <View style={styles.container}>

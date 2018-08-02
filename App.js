@@ -11,9 +11,9 @@ import {
   TouchableHighlight
 } from "react-native";
 
-import SortingView from "./View/SortingView.js";
-import Housing from "./View/Housing.js";
-import Menu from "./View/Menu.js";
+import PhoneListView from "./View/PhoneListView.js";
+import HouseListView from "./View/HouseListView.js";
+import MenuListView from "./View/MenuListView.js";
 import VWOAPIView from "./Component/VWOAPIView.js";
 import SideMenu from "react-native-side-menu";
 import VWO from "vwo-react-native";
@@ -40,13 +40,13 @@ export default class App extends React.Component {
       case "sorting":
         return (
           <View style={{ flex: 1 }}>
-            <SortingView ref={child => {this.phoneList = child}}/>
+            <PhoneListView ref={child => {this.phoneList = child}}/>
           </View>
         );
       case "variable":
         return (
           <View style={{ flex: 1 }}>
-            <Housing />
+            <HouseListView />
           </View>
         );
       case "api":
@@ -68,7 +68,7 @@ export default class App extends React.Component {
 
   render() {
     const menu = (
-      <Menu
+      <MenuListView
         data={menuItems}
         style={styles.menu}
         menuClose={() => this.setState({ showMenu: false })}
