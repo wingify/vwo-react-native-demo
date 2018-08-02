@@ -18,13 +18,13 @@ export default class Navbar extends React.Component {
           title={this.props.title}
           leftButton={
             <TouchableHighlight
-               onPress={() => this.setState({ showMenu: !this.state.showMenu })}>
+              onPress={() => this.props.menuClick()}>
                <Image style={styles.menu} source={require("../images/Menu.png")} />
             </TouchableHighlight>
           }
           rightButton={
             <TouchableHighlight
-               onPress={() => this.setState({ showMenu: !this.state.showMenu })}>
+              onPress={() => this.props.reloadClick()}>
                <Image style={styles.menu} source={require("../images/Reload.png")} />
             </TouchableHighlight>
           }
