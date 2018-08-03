@@ -8,6 +8,8 @@ import {
   ImageBackground,
   TouchableOpacity
 } from "react-native";
+import VWO from "vwo-react-native";
+
 const window = Dimensions.get("window");
 
 export default class HouseView extends React.Component {
@@ -15,12 +17,15 @@ export default class HouseView extends React.Component {
       showDetailsView: false,
     };
 
-  itemTapped() {
+  itemTapped = async () => {
+    let heading = await VWO.stringForKey("heading", "Use our House Agent!");
+    let content = await VWO.stringForKey("content", "You can use our in-house agents who can help you find a suitable house.");
+    
+
     Alert.alert(
-      'Use our House Agent!',
-      'You can use our in-house agents who can help you find a suitable house.',
+      heading, content,
       [
-        {text: 'Upgrade with $6', onPress: () => console.log('Ask me later pressed')},
+        {text: 'Upgrade with $6', onPress: () => VWO.trackConversion("upgrade-clicked")},
         {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
       ],
       { cancelable: false }
