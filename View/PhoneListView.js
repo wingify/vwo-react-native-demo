@@ -13,12 +13,14 @@ export default class PhoneListView extends React.Component {
 
   sortPhoneList() {
     var newList = phoneList
+    const strrr = VWO.stringForKey("heading")
     const variation = VWO.variationNameForTestKey("sorting")
-    if (variation == "Control") {
+    console.log("====================== " + JSON.stringify(variation)  + typeof(variation));
+    if (variation == "Sort-Alphabetically") {
       newList.sort(function(a,b) {
         return ((a.name > b.name) ? 0 : -1 );
       });
-    } else if (variation == "Variation-1") {
+    } else if (variation == "Sort-By-Price") {
       newList.sort(function(a,b) {
         return ((a.price > b.price) ? 0 : -1 );
       });      

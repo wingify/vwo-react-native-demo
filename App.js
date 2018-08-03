@@ -14,11 +14,12 @@ import {
 import PhoneListView from "./View/PhoneListView.js";
 import HouseListView from "./View/HouseListView.js";
 import MenuListView from "./View/MenuListView.js";
-import VWOAPIView from "./Component/VWOAPIView.js";
-import SideMenu from "react-native-side-menu";
-import VWO from "vwo-react-native";
+import VWOAPIView from "./View/VWOAPIView.js";
 import menuItems from "./data/MenuItems.json";
 import Navbar from "./Component/Navbar.js";
+
+import SideMenu from "react-native-side-menu";
+import VWO from "vwo-react-native";
 
 const window = Dimensions.get("window");
 

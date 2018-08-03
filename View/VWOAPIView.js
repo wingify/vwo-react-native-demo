@@ -22,7 +22,6 @@ export default class VWOAPIView extends React.Component {
 
   componentWillMount() {
     this.readFromClipboard();
-    this.loadAPIKeyFromPersistantStorage();
   }
 
   readFromClipboard = async () => {
@@ -30,17 +29,6 @@ export default class VWOAPIView extends React.Component {
     const splitKey = clipboardString.split("-");
     if (splitKey.length == 2 && splitKey[0].length == 32) {
       this.setState({ textInput: clipboardString });
-    }
-  };
-
-  loadAPIKeyFromPersistantStorage = async () => {
-    try {
-      const apiKey = await AsyncStorage.getItem(apiStorageKey);
-      if (apiKey !== null) {
-        this.setState({ apiKey });
-      }
-    } catch (e) {
-      console.error("Failed to load API Key.");
     }
   };
 
