@@ -11,11 +11,9 @@ export default class PhoneListView extends React.Component {
     phones: phoneList
   };
 
-  sortPhoneList() {
+  sortPhoneList = async () => {
     var newList = phoneList
-    const strrr = VWO.stringForKey("heading")
-    const variation = VWO.variationNameForTestKey("sorting")
-    console.log("====================== " + JSON.stringify(variation)  + typeof(variation));
+    const variation = await VWO.variationNameForTestKey("sorting")
     if (variation == "Sort-Alphabetically") {
       newList.sort(function(a,b) {
         return ((a.name > b.name) ? 0 : -1 );
