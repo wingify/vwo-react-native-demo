@@ -13,8 +13,7 @@ export default class PhoneListView extends React.Component {
 
   sortPhoneList() {
     var newList = phoneList
-    const variation = "Variation-1"
-    // const variation = "Control"
+    const variation = VWO.variationNameForTestKey("sorting")
     if (variation == "Control") {
       newList.sort(function(a,b) {
         return ((a.name > b.name) ? 0 : -1 );
