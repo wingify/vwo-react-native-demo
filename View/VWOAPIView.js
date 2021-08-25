@@ -33,14 +33,14 @@ export default class VWOAPIView extends React.Component {
   };
 
   launchVWO(apiKey) {
-    if (apiKey == "") {
-      alert("Please enter valid apiKey");
-      return;
-    }
+    // if (apiKey == "") {
+    //   alert("Please enter valid apiKey");
+    //   return;
+    // }
     var that = this;
     VWO.setLogLevel(VWO.logLevelDebug);    
 
-    VWO.launch(apiKey, {}).then(() => {
+    VWO.launch('653a9dcd6c43ce70ec730c9af3c30594-469557', {}).then(() => {
       console.log("Launch success " + apiKey);
       that.storeAPIKey(apiKey);
       that.setState({ apiKey });
